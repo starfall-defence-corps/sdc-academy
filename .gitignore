@@ -1,0 +1,14 @@
+# Internal dev files
+CLAUDE.md
+AGENTS.md
+IMPLEMENTATION_PLAN.md
+ideas.md
+PLAN.md
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
