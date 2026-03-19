@@ -11,6 +11,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | Mission | Codename | Topic | Repo |
 |---------|----------|-------|------|
 | 1.1 | Fleet Census | Inventory, ad-hoc commands, fact gathering | [mission-1-1-fleet-census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census) |
+| 1.2 | Lock the Door | Playbook fundamentals, SSH hardening, handlers | [mission-1-2-lock-the-door](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) |
 
 *More missions coming soon.*
 
