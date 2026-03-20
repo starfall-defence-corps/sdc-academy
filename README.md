@@ -18,27 +18,36 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 ## How to Enrol
 
 1. Navigate to your assigned mission repo (see table above)
-2. Click **Use this template** → **Create a new repository**
-3. Clone your new repo locally
-4. Follow the README in the mission repo
+2. Click **Use this template** > **Create a new repository** (this creates your own copy)
+3. Name your repo (e.g., `mission-1-1-fleet-census`), set it to **Public**
+4. Clone your new repo locally and follow the README inside
+
+> **Important**: Use **"Use this template"**, not "Fork". Templates give you a clean copy with no link back to the original.
 
 ## Prerequisites
 
 - **Docker Desktop** (running)
 - **GNU Make**
 - **Ansible** (`ansible-core`)
-- **Python 3.10+**
+- **Python 3.10+** (with `python3-venv` on Debian/Ubuntu)
 - **Git**
+
+> **Windows users**: Install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) and run all commands from your WSL terminal. Docker Desktop should use the WSL2 backend.
 
 ## ARIA — Your Automated Reviewer
 
-When you submit your work via Pull Request, **ARIA** (Automated Review & Intelligence Analyst) automatically reviews your submission:
+**ARIA** (Automated Review & Intelligence Analyst) reviews your work in two ways:
 
-1. Deterministic tests validate your work (pytest)
-2. An LLM analyses your files for structure, security, and best practices
-3. ARIA posts a qualitative review as a PR comment
+**Locally** — run `make test` to get instant pass/fail verification. No API key needed. Works offline.
 
-Local testing (`make test`) runs pytest only — fast, offline, no API key needed.
+**On Pull Request** — when you push your work and open a PR to `main`, ARIA reads your files and posts a qualitative code review as a PR comment (structure, security, recommendations).
+
+To enable PR reviews, add an API key to your repo:
+1. Get a key from [platform.claude.com](https://platform.claude.com/)
+2. In your repo: **Settings** > **Secrets and variables** > **Actions** > **New repository secret**
+3. Name: `ANTHROPIC_API_KEY`, Value: your key
+
+If no key is configured, ARIA skips the PR review — local testing still works.
 
 ## About
 
