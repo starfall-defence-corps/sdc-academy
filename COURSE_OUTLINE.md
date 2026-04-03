@@ -461,7 +461,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 
 > **Rank**: Lieutenant JG → Lieutenant → Lt. Commander
 > **Time**: 16–20 hours
-> **Lab**: Codespaces + Terraform VMs for 2.3+
+> **Lab**: Docker containers (all missions)
 > **Concludes with**: Master Simulation — "Operation: Iron Curtain"
 
 ## 2.1 Weapon Handling Test (Molecule Deep Dive)
@@ -532,18 +532,18 @@ Both: **documented, measurable, repeatable security configuration that can be au
    - CIS sections, levels, STIG overview
    - Mapping controls to tasks (worked example)
    - Tags: `--tags "ssh,filesystem"`
-   - OpenSCAP scanning and delta reporting
+   - Lynis scanning and hardening index measurement
 
 2. **Practice Field**: "The Compliance Dashboard"
-   - Unhardened vs hardened containers, OpenSCAP delta
-   - Fix 5 controls, rescan, measure improvement
+   - Unhardened vs hardened containers, Lynis delta
+   - Fix 5 controls, rescan, measure hardening index improvement
 
 3. **Obstacle Course 2**: "The Compliance Gauntlet"
 
    > START YOUR TIMER
 
    **Mission 1**: 10 CIS controls → Ansible tasks with tags
-   **Mission 2**: OpenSCAP before/after — 80%+ improvement
+   **Mission 2**: Lynis before/after — 20+ point improvement
 
    > STOP YOUR TIMER
 
@@ -560,7 +560,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 4. **Mission**: "Operation: Baseline"
    - **Extend 2.1 role** with CIS Level 1 (spaced repetition)
    - Filesystem, auth, network, logging, SSH
-   - Molecule-tested, OpenSCAP as CI artifact, tagged
+   - Molecule-tested, Lynis as compliance measure, tagged
 
 ---
 
@@ -589,8 +589,8 @@ Both: **documented, measurable, repeatable security configuration that can be au
    - Phase 3: One node fails mid-roll — handle it
 
 3. **Mission**: "Operation: Fleet Sync"
-   - Terraform VMs (4+ on Hetzner)
-   - Dynamic inventory, rolling hardening
+   - Docker containers (4 app servers + HAProxy LB + monitoring node)
+   - Rolling hardening with serial, delegation, error handling
    - **Same role from Module 1, extended through 2.1–2.2**
 
 ---
@@ -617,7 +617,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
    > START YOUR TIMER
 
-   **Mission 1**: Actions workflow — lint, Molecule 2 OS, OpenSCAP artifact
+   **Mission 1**: Actions workflow — lint, Molecule 2 OS, Lynis scan
    **Mission 2**: Branch protection, required review, weekly scan
 
    > STOP YOUR TIMER
@@ -634,7 +634,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 3. **Mission**: "Operation: Defence in Depth"
    - Full pipeline for CIS role
-   - Lint, multi-OS Molecule, OpenSCAP, deploy with approval
+   - Lint, multi-OS Molecule, Lynis scan, Makefile targets
    - Branch protection, weekly drift detection
    - ARIA reviews pipeline design
 
@@ -645,17 +645,17 @@ Both: **documented, measurable, repeatable security configuration that can be au
 > **General Snowflake. 6 servers, every one different. Hand-built. Undocumented. Your mission: uniform, tested, automated compliance.**
 
 **Prerequisites**: All Module 2 complete
-**Format**: 6 Terraform VMs (Ubuntu + Rocky). 3.5 hours. One repo. One pipeline.
+**Format**: 6 Docker containers (4 Ubuntu + 2 Rocky). 3.5 hours. One repo. One pipeline.
 
 ### Mission 1: Assessment (40 min)
-- 6 VMs, mixed OS, different misconfigurations
-- OpenSCAP baseline, inventory, facts, `ASSESSMENT.md`
+- 6 containers, mixed OS, CIS misconfigurations
+- Lynis baseline, inventory, facts, `ASSESSMENT.md`
 
 ### Mission 2: Remediation (75 min)
 - Roles → CIS Level 1 on all 6
 - Variables, templates, conditionals, Vault
 - Molecule on both OS families
-- OpenSCAP 60%+ improvement
+- Lynis 20+ point improvement
 
 ### Mission 3: Automation (60 min)
 - Full CI/CD pipeline
@@ -747,25 +747,17 @@ This is critical and often overlooked. During a real incident, the red team went
 
 # Module 4: Field Manual (Always Available)
 
-## FM-1: Tool Comparison
-| Tool | Purpose | Best For |
-|------|---------|----------|
-| Ansible | Config management, hardening | Agentless, multi-OS |
-| Terraform | Infrastructure provisioning | Cloud resources |
-| Molecule | Role testing | Verification |
-| OpenSCAP | Compliance scanning | CIS/STIG evidence |
-| Elastic Stack | SIEM, logging, detection | Fleet visibility |
-| pfSense | Firewall | Network perimeter |
-| Wazuh | HIDS + SIEM | Host detection |
-
-## FM-2: Module Reference (Blue Team)
+## FM-1: Ansible Module Reference (Blue Team)
 Searchable by category. Each card: FQCN, example, security use case, mistakes.
 
-## FM-3: CIS → Ansible Mapping
-Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level.
+## FM-2: YAML & Jinja2 Quick Reference
+Syntax, filters, conditionals, loops. The essentials without the noise.
 
-## FM-4: Simulation Hub
-All missions with replay and personal best tracking.
+## FM-3: Molecule & Testing Reference
+Molecule lifecycle, Testinfra patterns, multi-platform scenarios, CI integration.
+
+## FM-4: CIS & Compliance Reference
+Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level. Lynis hardening index.
 
 ## FM-5: Glossary
 - **Idempotency**: Run twice = same result. The entire point.
@@ -780,7 +772,7 @@ All missions with replay and personal best tracking.
 - **Infrastructure as Code**: In files, in git. Not in someone's head.
 - **Mission Command**: Define objective, let executor determine how. `state: present` is Mission Command for servers.
 
-## FM-6: FAQ
+## FM-6: FAQ & Simulation Hub
 - **Why Ansible?** Agentless, YAML, dominant in defence/government.
 - **Need to code?** No. YAML + CLI.
 - **Why Molecule?** "I ran it and it looked fine" is how General Snowflake won.
