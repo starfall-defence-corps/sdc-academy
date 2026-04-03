@@ -388,7 +388,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 - `.gitignore` done right
 
 ### Briefing
-*"Colonel Hardcoded-Password embedded database credentials in three public repos. Plaintext. In the commit history. This ends now. Everything you've built — SSH hardening, services, templates — restructure into a proper SOP (role). Secrets go in the Crypto Cell (Vault). Everything through change authorisation (PRs)."*
+*"Colonel Hardcoded-Password embedded database credentials on three fleet nodes. Plaintext. On the filesystem. This ends now. Everything you've built — SSH hardening, services, templates — restructure into a proper SOP (role). Secrets go in the Crypto Cell (Vault). Everything through change authorisation (PRs)."*
 
 ### Content
 1. **Guide**: "Building Your SOPs"
@@ -402,8 +402,8 @@ The Voidborn's agents — each a real-world anti-pattern:
    - Create vault-encrypted variables
    - Decrypt, edit, re-encrypt
    - Reference vault vars in playbooks
-   - Detective exercise: find Colonel Hardcoded-Password's secret in git history
-     - `git log -p`, `git show` — why credential rotation matters even after removal
+   - Detective exercise: find Colonel Hardcoded-Password's plaintext credentials on the fleet filesystem
+     - `ansible all -m shell -a "cat /opt/fleet-db-creds.txt"` — why plaintext secrets on disk are a compromise waiting to happen
 
 3. **Mission**: "Operation: Clean House"
    - **Convert 1.2–1.4 playbooks into a role** (same tasks, proper structure)
