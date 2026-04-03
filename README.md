@@ -12,8 +12,9 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 |---------|----------|-------|------|
 | 1.1 | Fleet Census | Inventory, ad-hoc commands, fact gathering | [mission-1-1-fleet-census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census) |
 | 1.2 | Lock the Door | Playbook fundamentals, SSH hardening, handlers | [mission-1-2-lock-the-door](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) |
-
-*More missions coming soon.*
+| 1.3 | Clean Sweep | Service hardening, firewall, sysctl, file permissions | [mission-1-3-clean-sweep](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) |
+| 1.4 | Many Ships | Variables, Jinja2 templates, conditionals, multi-OS | [mission-1-4-many-ships](https://github.com/starfall-defence-corps/mission-1-4-many-ships) |
+| 1.5 | Clean House | Roles, Ansible Vault, secrets management | [mission-1-5-clean-house](https://github.com/starfall-defence-corps/mission-1-5-clean-house) |
 
 ## How to Enrol
 
