@@ -22,6 +22,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | Mission | Codename | Topic | Repo |
 |---------|----------|-------|------|
 | 2.1 | Weapon Handling Test | Molecule, Testinfra, test-driven infrastructure | [mission-2-1-weapon-handling-test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) |
+| 2.2 | Compliance as Code | CIS benchmarks, Lynis scanning, tagged controls | [mission-2-2-compliance-as-code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) |
 
 ## How to Enrol
 
