@@ -17,6 +17,12 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 1.5 | Clean House | Roles, Ansible Vault, secrets management | [mission-1-5-clean-house](https://github.com/starfall-defence-corps/mission-1-5-clean-house) |
 | **Gateway** | **Operation: First Contact** | **Capstone assessment — all Module 1 skills, 75 min** | [gateway-simulation](https://github.com/starfall-defence-corps/gateway-simulation) |
 
+### Module 2 — Advanced Individual Training
+
+| Mission | Codename | Topic | Repo |
+|---------|----------|-------|------|
+| 2.1 | Weapon Handling Test | Molecule, Testinfra, test-driven infrastructure | [mission-2-1-weapon-handling-test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) |
+
 ## How to Enrol
 
 1. Navigate to your assigned mission repo (see table above)
