@@ -24,6 +24,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 2.1 | Weapon Handling Test | Molecule, Testinfra, test-driven infrastructure | [mission-2-1-weapon-handling-test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) |
 | 2.2 | Compliance as Code | CIS benchmarks, Lynis scanning, tagged controls | [mission-2-2-compliance-as-code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) |
 | 2.3 | Fleet Sync | Rolling updates, delegation, error handling, orchestration | [mission-2-3-fleet-sync](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) |
+| 2.4 | Defence in Depth | CI/CD pipelines, ansible-lint, drift detection | [mission-2-4-defence-in-depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) |
 
 ## How to Enrol
 
