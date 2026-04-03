@@ -27,6 +27,17 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 2.4 | Defence in Depth | CI/CD pipelines, ansible-lint, drift detection | [mission-2-4-defence-in-depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) |
 | **Master** | **Operation: Iron Curtain** | **Capstone assessment — all Module 2 skills, 3.5 hr** | [master-simulation](https://github.com/starfall-defence-corps/master-simulation) |
 
+### Field Manuals — Reference Library
+
+| Manual | Topic |
+|--------|-------|
+| [FM-1](field-manuals/FM-1-ansible-reference.md) | Ansible Module Reference — blue team module cards |
+| [FM-2](field-manuals/FM-2-yaml-jinja2-reference.md) | YAML & Jinja2 Quick Reference |
+| [FM-3](field-manuals/FM-3-molecule-testing-reference.md) | Molecule & Testing Reference |
+| [FM-4](field-manuals/FM-4-cis-compliance-reference.md) | CIS & Compliance Reference |
+| [FM-5](field-manuals/FM-5-glossary.md) | Glossary — technical + lore terms |
+| [FM-6](field-manuals/FM-6-faq-simulation-hub.md) | FAQ & Simulation Hub |
+
 ## How to Enrol
 
 1. Navigate to your assigned mission repo (see table above)
