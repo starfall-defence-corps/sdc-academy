@@ -15,6 +15,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 1.3 | Clean Sweep | Service hardening, firewall, sysctl, file permissions | [mission-1-3-clean-sweep](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) |
 | 1.4 | Many Ships | Variables, Jinja2 templates, conditionals, multi-OS | [mission-1-4-many-ships](https://github.com/starfall-defence-corps/mission-1-4-many-ships) |
 | 1.5 | Clean House | Roles, Ansible Vault, secrets management | [mission-1-5-clean-house](https://github.com/starfall-defence-corps/mission-1-5-clean-house) |
+| **Gateway** | **Operation: First Contact** | **Capstone assessment — all Module 1 skills, 75 min** | [gateway-simulation](https://github.com/starfall-defence-corps/gateway-simulation) |
 
 ## How to Enrol
 
