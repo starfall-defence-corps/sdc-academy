@@ -49,7 +49,9 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 1. Navigate to your assigned mission repo (see table above)
 2. Click **Use this template** > **Create a new repository** (this creates your own copy)
 3. Name your repo (e.g., `mission-1-1-fleet-census`), set it to **Public**
-4. Clone your new repo locally and follow the README inside
+4. Clone your new repo locally and run `make doctor` — it checks your machine is mission-ready
+5. Follow the README inside: `make setup` boots the lab, `make test` asks ARIA to verify your work
+6. Done? `make submit` branches, commits, pushes, and opens your review PR in one command
 
 > **Important**: Use **"Use this template"**, not "Fork". Templates give you a clean copy with no link back to the original.
 
