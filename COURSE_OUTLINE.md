@@ -48,61 +48,59 @@ You define WHAT. Ansible determines HOW. If it's already done, it does nothing. 
 |------|----------------|-----|
 | GitHub | Mission repos, PRs, code review, progression tracking | Real-world workflow from day 1 |
 | GitHub Actions | CI pipeline — runs on every PR | Automated testing before students fully understand it |
-| GitHub Codespaces | Zero-setup lab environment | One-click start, any device, 60hrs/month free |
+| GitHub Codespaces *(planned)* | Zero-setup lab environment | One-click start, any device, 60hrs/month free |
 | Docker | Target containers for Molecule testing | Consistent across all platforms including Apple Silicon |
 | Molecule + Testinfra | Role testing — Weapon Handling Test | You don't deploy what you haven't tested |
 | ansible-lint | Code quality enforcement | Inline PR annotations teach style naturally |
 | Lynis / OpenSCAP | Security scoring with delta from baseline | Measurable hardening progress |
 | Elastic Stack | Fleet-wide logging, detection, alerting | Industry-standard SIEM, core to MOS 4 |
 | pfSense | Firewall management and automation | Real network security, core to MOS 2 |
-| ARIA (GitHub App + LLM) | Automated qualitative PR review in character | Feedback worth reading |
+| ARIA (GitHub Action + LLM) | Automated qualitative PR review in character | Feedback worth reading |
 | Terraform + Hetzner | Cloud VMs for advanced missions (Lieutenant+) | Real multi-host when Docker isn't enough |
 
 ---
 
-## Student Workflow: Fork → Branch → PR → ARIA
+## Student Workflow: Template → Branch → PR → ARIA
 
 Every mission follows the same real-world Git workflow:
 
 ```
-1. Student FORKS the mission template repo to their own GitHub account
-2. Student opens a CODESPACE on their fork (or clones locally)
-3. Student creates a BRANCH for their work
-4. Student writes code, commits, pushes to their fork
-5. Student opens a PR within their own fork (branch → main)
-6. CI runs automatically (GitHub Actions: lint + Molecule)
-7. ARIA reviews the PR (triggered by GitHub App webhook)
-8. Student addresses feedback, pushes fixes
-9. When CI passes and ARIA approves → mission complete
+1. Student clicks USE THIS TEMPLATE on the mission repo → their own clean copy
+2. Student CLONES their copy locally (Codespaces support is planned)
+3. Student boots the lab (make setup) and creates a BRANCH for their work
+4. Student writes code, commits, verifies locally with make test, pushes
+5. Student opens a PR within their own repo (branch → main)
+6. CI runs automatically (GitHub Actions: mission checks + ARIA review)
+7. Student addresses feedback, pushes fixes
+8. When checks pass and ARIA approves → mission complete
 ```
 
-**Why fork, not branch on the org repo?**
+**Why "Use this template", not fork?**
+- A template copy has no link back to the original — a clean, independent start
 - Students can't interfere with each other's work
-- Template repo stays clean — never polluted with student code
+- The mission repo stays clean — never polluted with student code
 - Each student has their own full copy to experiment with
-- PRs within the fork keep review history private to the student
-- Mirrors real open-source contribution workflow
+- PRs stay within the student's own repo, so review history is theirs
 
-**The PR is the submission.** It's never merged to the org's template repo. The student's fork is their portfolio — every mission PR with CI results and ARIA feedback preserved.
+**The PR is the submission.** It's never merged to the org's mission repo. The student's copy is their portfolio — every mission PR with CI results and ARIA feedback preserved.
 
 ### ARIA Architecture
 
-ARIA runs as a **GitHub App** installed on the Academy's GitHub organisation:
+ARIA currently runs as a **GitHub Action** (`starfall-defence-corps/aria@main`) referenced by every mission repo's CI workflow:
 
 ```
-Student opens PR on their fork
-  → GitHub sends webhook to ARIA backend (hosted service)
-  → ARIA backend:
-      1. Reads PR diff and file contents via GitHub API
-      2. Runs structured analysis (lint results, test results, security checks)
-      3. Sends to LLM API with system prompt (Starfall lore + Ansible expertise)
-      4. Posts review comment on the PR via GitHub API
-  → Student sees ARIA's feedback as a PR comment
+Student opens PR in their own repo
+  → GitHub Actions workflow runs
+  → ARIA action:
+      1. Runs the mission's automated checks
+      2. Reads the student's submitted files
+      3. Sends them to the LLM with the mission context (Starfall lore + Ansible expertise)
+      4. Posts an in-character review comment on the PR
 ```
 
-**API key handling**: The LLM API key lives in the ARIA backend service — students never see it, never need it. The GitHub App authenticates via its own installation token. One deployment serves all students across all forks.
+**API key handling (current)**: The qualitative PR review uses an Anthropic API key stored as a secret (`ANTHROPIC_API_KEY`) in the student's own repo — see [How to Enrol](README.md#how-to-enrol). If no key is configured, ARIA skips the PR review and CI still passes. Local `make test` never needs a key.
 
-**Cost control**: Rate limiting per student (e.g., max 5 ARIA reviews per mission), review only on PR open/update events, lightweight LLM model for initial lint-level feedback, full model for substantive review.
+**Planned upgrade**: a centrally hosted ARIA **GitHub App** — the key lives in the backend, students never handle it, one deployment serves all students. Cost control: rate limiting per student, review only on PR open/update events, lightweight model for lint-level feedback, full model for substantive review.
 
 ---
 
@@ -196,7 +194,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 
 > **Rank**: Cadet → Ensign
 > **Time**: 12–15 hours
-> **Lab**: Docker + Molecule via GitHub Codespaces
+> **Lab**: Docker + Molecule, run locally with Docker Desktop (Codespaces support planned)
 > **Concludes with**: Gateway Simulation — "Operation: First Contact"
 
 ## 1.1 Reporting for Duty (SSH, Inventory & Ad-Hoc Commands)
@@ -233,7 +231,7 @@ The Voidborn's agents — each a real-world anti-pattern:
    - Backup for reset
 
 3. **Mission**: "Fleet Census"
-   - Fork → Codespace → branch → inventory → ad-hoc verify → PR
+   - Use template → clone → branch → inventory → ad-hoc verify → PR
    - CI validates inventory + connectivity + permissions
    - ARIA reviews
 
@@ -425,7 +423,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 > **The Voidborn have compromised a forward observation post. Three nodes exposed. 75 minutes. Everything you've learned.**
 
 **Prerequisites**: All Module 1 PRs complete
-**Format**: Fork template → branch → PR → CI must pass
+**Format**: Use template → branch → PR → CI must pass
 
 ### Mission 1: Reconnaissance (20 min)
 - 3 containers with misconfigurations
@@ -682,6 +680,8 @@ Both: **documented, measurable, repeatable security configuration that can be au
 # Module 3: MOS Specialization
 
 > Available from Ensign. Mission briefing only. 2+ MOS = Commander rank.
+>
+> **Status: in development** — MOS mission repos are not yet published.
 
 ## MOS 1: Windows Hardening
 - WinRM, Kerberos/CredSSP/NTLM
@@ -786,6 +786,8 @@ Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level. Lynis hardenin
 # Final Exercise: "Operation: Enduring Shield"
 
 > Available after Lt. Commander. Pass → Captain.
+>
+> **Status: in development** — the exercise repo is not yet published.
 
 ### Setup
 6 nodes, running 48 hours. Red team has planted:
@@ -813,101 +815,7 @@ Using **only playbooks/roles from the course**:
 
 # Implementation
 
-## Repo Structure
-```
-starfall-academy/                          # GitHub org
-├── mission-1-1-fleet-census/              # Template repos
-├── mission-1-2-lock-the-door/
-├── mission-1-3-clean-sweep/
-├── mission-1-4-one-playbook-many-ships/
-├── mission-1-5-clean-house/
-├── gateway-operation-first-contact/
-├── mission-2-1-test-everything/
-├── mission-2-2-baseline/
-├── mission-2-3-fleet-sync/
-├── mission-2-4-defence-in-depth/
-├── master-operation-iron-curtain/
-└── final-operation-enduring-shield/
-```
-
-Each: `.github/workflows/ci.yml`, `.devcontainer/`, `BRIEFING.md`, `HINTS.md` (rank-dependent), `molecule/`, `README.md`.
-
-## ARIA as GitHub App
-```
-Architecture:
-  GitHub App (installed on starfall-academy org)
-    → Receives webhook on PR events across student forks
-    → Backend service (hosted, e.g., Railway/Fly.io/VPS)
-    → Reads PR via GitHub API
-    → Analyses: lint output, Molecule results, diff review
-    → Calls LLM API (key stored in backend, students never see it)
-    → Posts review comment on PR via GitHub API
-
-Cost control:
-  - Max 5 ARIA reviews per mission per student
-  - Lightweight model for lint-level checks
-  - Full model for substantive architecture review
-  - Rate limiting per GitHub user
-```
-
-## Progression Tracking
-- GitHub org project board: columns = ranks
-- Card per student, moved on mission completion
-- **Tracking trigger**: ARIA marks mission as passed → webhook → project board update
-  - Alternative: student self-reports by adding label to PR (honour system)
-  - Alternative: instructor reviews and moves card manually (B2B cohort model)
-- B2B dashboard: completion rates, time-per-mission, common failures
-
-## Codespace Config
-```json
-{
-  "name": "Starfall Academy Lab",
-  "image": "ghcr.io/starfall-academy/lab:latest",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" }
-  },
-  "postCreateCommand": "pip install ansible molecule molecule-docker ansible-lint testinfra yamllint",
-  "customizations": {
-    "vscode": {
-      "extensions": ["redhat.ansible", "redhat.vscode-yaml"]
-    }
-  }
-}
-```
-
----
-
-# Build Sequence
-
-## Phase 1: Proof of Concept (Week 1–2)
-- [ ] GitHub org
-- [ ] Devcontainer image
-- [ ] Mission 1.1 — full workflow: fork → Codespace → PR → CI → ARIA
-- [ ] ARIA GitHub App prototype
-- [ ] Validate on Mac, Windows, browser-only
-
-## Phase 2: Module 1 (Weeks 3–5)
-- [ ] Missions 1.2–1.5
-- [ ] Gateway Simulation
-- [ ] All guides, practice fields
-
-## Phase 3: Module 2 (Weeks 6–8)
-- [ ] Missions 2.1–2.4
-- [ ] Master Simulation
-- [ ] Terraform/Hetzner automation
-- [ ] Obstacle course timing calibration
-
-## Phase 4: Modules 3 & 4 (Week 9)
-- [ ] MOS guides (2–3 complete, rest outlined)
-- [ ] Field Manual seeded
-- [ ] CIS mapping, FAQ, Glossary
-
-## Phase 5: Final + Polish (Week 10–11)
-- [ ] Operation: Enduring Shield
-- [ ] ARIA tuning
-- [ ] Beta: 5–10 users (military + civilian)
-- [ ] Timing calibration from real data
+Internal implementation notes and the build roadmap live in [docs/implementation-notes.md](docs/implementation-notes.md). Cadets, nothing for you there — carry on.
 
 ---
 
