@@ -54,25 +54,11 @@ Cost control:
   - Alternative: instructor reviews and moves card manually (B2B cohort model)
 - B2B dashboard: completion rates, time-per-mission, common failures
 
-## Codespaces (planned — spike in sdc-academy#40)
+## Codespaces (SHIPPED — validated in sdc-academy#40, rolled out in #59)
 
-Draft devcontainer for the labs (needs validation against the privileged/systemd Docker Compose setup):
+All 11 mission repos carry this devcontainer. Validated on a real 4-core codespace: labs run **unchanged** under the DinD VM (systemd `running`, graceful test fail, clean destroy); cold provision ~5 min, `make setup` ~40s. Do **not** add the `sshd` feature — it collides with lab port 2222. Prebuilds don't transfer to student template copies, so the ~5 min first boot is per-student and one-time.
 
-```json
-{
-  "name": "Starfall Academy Lab",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" }
-  },
-  "postCreateCommand": "pip install ansible molecule molecule-docker ansible-lint testinfra yamllint",
-  "customizations": {
-    "vscode": {
-      "extensions": ["redhat.ansible", "redhat.vscode-yaml"]
-    }
-  }
-}
-```
+Canonical config: [`mission-1-1-fleet-census/.devcontainer/devcontainer.json`](https://github.com/starfall-defence-corps/mission-1-1-fleet-census/blob/main/.devcontainer/devcontainer.json) (identical in all 11 repos).
 
 ## Build Sequence
 

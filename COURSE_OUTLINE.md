@@ -48,7 +48,7 @@ You define WHAT. Ansible determines HOW. If it's already done, it does nothing. 
 |------|----------------|-----|
 | GitHub | Mission repos, PRs, code review, progression tracking | Real-world workflow from day 1 |
 | GitHub Actions | CI pipeline — runs on every PR | Automated testing before students fully understand it |
-| GitHub Codespaces *(planned)* | Zero-setup lab environment | One-click start, any device, 60hrs/month free |
+| GitHub Codespaces | Zero-setup lab environment | One-click start, any device — free tier covers ~30 hrs/month on the lab machine |
 | Docker | Target containers for Molecule testing | Consistent across all platforms including Apple Silicon |
 | Molecule + Testinfra | Role testing — Weapon Handling Test | You don't deploy what you haven't tested |
 | ansible-lint | Code quality enforcement | Inline PR annotations teach style naturally |
@@ -66,7 +66,7 @@ Every mission follows the same real-world Git workflow:
 
 ```
 1. Student clicks USE THIS TEMPLATE on the mission repo → their own clean copy
-2. Student CLONES their copy locally (Codespaces support is planned)
+2. Student CLONES their copy locally — or opens it in a GitHub Codespace (zero setup)
 3. Student boots the lab (make setup) and creates a BRANCH for their work
 4. Student writes code, commits, verifies locally with make test, pushes
 5. Student opens a PR within their own repo (branch → main)
@@ -194,7 +194,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 
 > **Rank**: Cadet → Ensign
 > **Time**: 12–15 hours
-> **Lab**: Docker + Molecule, run locally with Docker Desktop (Codespaces support planned)
+> **Lab**: Docker + Molecule — locally with Docker Desktop, or zero-setup via GitHub Codespaces
 > **Concludes with**: Gateway Simulation — "Operation: First Contact"
 
 ## 1.1 Reporting for Duty (SSH, Inventory & Ad-Hoc Commands)
