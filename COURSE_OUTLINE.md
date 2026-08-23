@@ -190,6 +190,19 @@ The Voidborn's agents — each a real-world anti-pattern:
 
 ---
 
+# Mission 0: Reporting for Duty (Enrolment)
+
+> **Rank**: Recruit → Cadet
+> **Time**: ~15 minutes
+> **Lab**: One Docker node (`sdc-gate`) — locally or via GitHub Codespaces
+> **Repo**: [mission-0-reporting-for-duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty)
+
+Not a training mission — an arrival. Recruits enrol via **Use this template**, run `make doctor` (which checks the entire Foundation-module toolchain: Docker, Ansible, Python, Git, gh), boot a one-node lab, ping it with Ansible, and file a duty report with a single ad-hoc command. First green ARIA banner in ~15 minutes.
+
+**Purpose**: isolate every environment problem — dead Docker daemon, busy ports, missing tools — *before* any Ansible content is at stake. If Mission 0 is green, the machine is cleared for Module 1. No Ansible knowledge required; every command is given verbatim.
+
+---
+
 # Module 1: Basic Training (Foundation)
 
 > **Rank**: Cadet → Ensign
@@ -197,7 +210,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 > **Lab**: Docker + Molecule — locally with Docker Desktop, or zero-setup via GitHub Codespaces
 > **Concludes with**: Gateway Simulation — "Operation: First Contact"
 
-## 1.1 Reporting for Duty (SSH, Inventory & Ad-Hoc Commands)
+## 1.1 Fleet Census (SSH, Inventory & Ad-Hoc Commands)
 
 **Rank**: Cadet
 **Villain**: Agent Chmod-777
