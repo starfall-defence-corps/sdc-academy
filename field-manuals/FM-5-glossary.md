@@ -30,9 +30,9 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 ## C
 
-**Cadet / Ensign / Lieutenant JG / Lieutenant / Lt. Commander** -- SDC Academy rank progression. Cadets begin at Mission 1.1. Promotion occurs upon completing mission milestones: Ensign (after 1.2), Lieutenant JG (after 1.5), Lieutenant (after the Gateway Simulation), Lt. Commander (after the Master Simulation).
+**Midshipman / Sub-Lieutenant / Lieutenant / Lieutenant Commander / Commander / Captain** -- SDC Academy rank progression (Royal Navy officer track; officer ranks only). Cadets commission as Midshipman at enrolment and promote on milestones: Sub-Lieutenant (Module 1), Lieutenant (after the Gateway Simulation, held through Module 2), Lieutenant Commander (after the Master Simulation), Commander (Module 3 specialisations), Captain (Final Exercise).
 
-**Captain Unpatched** -- Lore villain. A negligent commanding officer whose ships run outdated software with known CVEs. Represents the threat of unpatched systems and ignored compliance baselines. -- *First introduced: Mission 2.2*
+**Corsair Unpatched** -- Lore villain. A negligent commanding officer whose ships run outdated software with known CVEs. Represents the threat of unpatched systems and ignored compliance baselines. -- *First introduced: Mission 2.2*
 
 **CI/CD Pipeline** -- Continuous Integration / Continuous Delivery. An automated workflow (typically GitHub Actions) that runs linting, syntax checks, and Molecule tests on every push or pull request. Catches configuration errors before they reach production. -- *First introduced: Mission 2.4*
 
@@ -40,7 +40,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **Collection** -- A distribution format for Ansible content (modules, roles, plugins). Academy missions rely on `ansible.posix` (for `sysctl`, `firewalld`, `authorized_key`) and `community.general` (for `ufw` and others). Installed via `ansible-galaxy collection install`.
 
-**Colonel Hardcoded-Password** -- Lore villain. An officer who stores credentials in plaintext across every ship in the fleet. Represents secrets committed to version control and unencrypted variable files. -- *First introduced: Mission 1.5*
+**Warlord Hardcoded-Password** -- Lore villain. An officer who stores credentials in plaintext across every ship in the fleet. Represents secrets committed to version control and unencrypted variable files. -- *First introduced: Mission 1.5*
 
 **Conditionals / when clause** -- Ansible's mechanism for running tasks only when a condition is true. Uses Jinja2 expressions evaluated at runtime (e.g., `when: ansible_os_family == "Debian"`). Critical for writing multi-OS playbooks. -- *First introduced: Mission 1.4*
 
@@ -48,7 +48,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **Converge** -- A Molecule test phase that applies the role or playbook under test to the target container. This is where Ansible actually runs. Preceded by `create` (spin up containers) and followed by `verify` (run assertions). -- *First introduced: Mission 2.1*
 
-**Corporal Copy-Paste** -- Lore villain. A technician who duplicates configuration blocks across ships instead of using variables and templates. Represents hardcoded values, copy-paste errors, and lack of abstraction. -- *First introduced: Mission 1.4*
+**Marauder Copy-Paste** -- Lore villain. A technician who duplicates configuration blocks across ships instead of using variables and templates. Represents hardcoded values, copy-paste errors, and lack of abstraction. -- *First introduced: Mission 1.4*
 
 **Crypto Cell** -- SDC lore term for Ansible Vault. The secure compartment aboard each vessel where encrypted credentials and classified configuration data are stored. See: **Ansible Vault**. -- *First introduced: Mission 1.5*
 
@@ -66,7 +66,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **Gateway Simulation / Operation: First Contact** -- The Module 1 capstone exercise. A timed 75-minute simulation that combines inventory management, SSH hardening, service control, multi-OS configuration, and role-based organisation into a single scenario. Passing earns the rank of Lieutenant.
 
-**General Snowflake** -- Lore villain of the Master Simulation. A flag officer who insists every ship in the fleet be configured by hand, rejecting automation and standardisation. Represents the ultimate anti-pattern: unique, unreproducible infrastructure.
+**Dread Admiral Snowflake** -- Lore villain of the Master Simulation. A flag officer who insists every ship in the fleet be configured by hand, rejecting automation and standardisation. Represents the ultimate anti-pattern: unique, unreproducible infrastructure.
 
 **group_vars** -- A directory containing YAML files that define variables applying to all hosts in a named inventory group. File names match group names (e.g., `group_vars/webservers.yml`). Higher specificity than `all` group vars, lower than `host_vars`. -- *First introduced: Mission 1.4*
 
@@ -98,7 +98,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 ## M
 
-**Master Simulation / Operation: Iron Curtain** -- The Module 2 capstone. A comprehensive scenario requiring students to enforce CIS-aligned hardening across a mixed-OS fleet, implement CI/CD pipelines, handle rolling updates, and defeat General Snowflake's manual-configuration doctrine.
+**Master Simulation / Operation: Iron Curtain** -- The Module 2 capstone. A comprehensive scenario requiring students to enforce CIS-aligned hardening across a mixed-OS fleet, implement CI/CD pipelines, handle rolling updates, and defeat Dread Admiral Snowflake's manual-configuration doctrine.
 
 **max_fail_percentage** -- An Ansible play-level setting that stops execution when the percentage of failed hosts exceeds the threshold. Prevents a bad update from propagating across the entire fleet. Works in conjunction with `serial`. -- *First introduced: Mission 2.3*
 
@@ -114,7 +114,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **Play / Playbook** -- A play is a mapping of hosts to tasks. A playbook is a YAML file containing one or more plays. Playbooks are the primary unit of Ansible automation -- repeatable, version-controlled, and auditable. -- *First introduced: Mission 1.2*
 
-**Private YOLO-Deploy** -- Lore villain. A reckless operator who pushes untested changes directly to production with no CI checks, no Molecule tests, and no rollback plan. Represents the absence of testing discipline and deployment safeguards. -- *First introduced: Mission 2.1*
+**Reaver YOLO-Deploy** -- Lore villain. A reckless operator who pushes untested changes directly to production with no CI checks, no Molecule tests, and no rollback plan. Represents the absence of testing discipline and deployment safeguards. -- *First introduced: Mission 2.1*
 
 **Privilege escalation / become** -- The mechanism by which Ansible elevates permissions on a managed host. The `become` directive uses `sudo` by default. Can be scoped to an entire play or individual tasks. See: **Become**.
 
