@@ -36,6 +36,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 2.3 | Fleet Sync | Rolling updates, delegation, error handling, orchestration | [mission-2-3-fleet-sync](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) |
 | 2.4 | Defence in Depth | CI/CD pipelines, ansible-lint, drift detection | [mission-2-4-defence-in-depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) |
 | 2.5 | Noise Storm | Incident response — SSH hardening, fail2ban, log forwarding, IOC blocking | [mission-2-5-noise-storm](https://github.com/starfall-defence-corps/mission-2-5-noise-storm) |
+| 2.6 | Counterattack | Incident response — persistence hunt & eradication, credential rotation, rolling remediation | [mission-2-6-counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) |
 | **Master** | **Operation: Iron Curtain** | **Capstone assessment — all Module 2 skills, 3.5 hr** | [master-simulation](https://github.com/starfall-defence-corps/master-simulation) |
 
 > Modules 3–4 (MOS specialisations) and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.

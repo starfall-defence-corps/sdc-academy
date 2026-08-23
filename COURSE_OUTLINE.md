@@ -111,7 +111,7 @@ Student opens PR in their own repo
 | **Cadet** | 1.1–1.2 | Enrolling | Full: inventory provided, skeleton playbook, all hints, tests visible |
 | **Ensign** | 1.3–1.5 + Gateway | Passing Gateway Simulation | Reduced: inventory provided, minimal skeleton, some hints |
 | **Lieutenant JG** | 2.1–2.2 | Completing WHT + Compliance | Minimal: blank playbook, no hints, tests visible |
-| **Lieutenant** | 2.3–2.5 | Completing fleet ops + pipeline + incident response | Mission briefing + pass/fail only |
+| **Lieutenant** | 2.3–2.6 | Completing fleet ops + pipeline + incident response | Mission briefing + pass/fail only |
 | **Lt. Commander** | Master Sim | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
 | **Commander** | Module 3 | Completing 2+ MOS specializations | Mission briefing only — design own approach |
 | **Captain** | Final Exercise | Passing Operation: Enduring Shield | Red team scenario — write own requirements, then implement |
@@ -141,6 +141,7 @@ At Cadet, you fill in blanks. By Captain, you're writing the requirements yourse
 | 2.3 Fleet Sync | Multi-host orchestration | Deploys roles from 1.5/2.2 across fleet |
 | 2.4 Defence in Depth | CI/CD automation | Automates testing from 2.1 + deployment |
 | 2.5 Noise Storm | Incident response (IR arc, act 1) | Applies Module 1–2 defences (SSH, firewall, roles, templates) under live attack |
+| 2.6 Counterattack | Incident response (IR arc, act 2) | Persistence hunt + eradication; reuses 2.3 rolling/health-gate to remediate without dropping the fleet |
 | Master Sim | Everything | All skills, all tools, under time pressure |
 
 *By the Master Simulation, students have written the same core tasks (SSH hardening, service management, file permissions) in 5+ different contexts.*
