@@ -4,11 +4,17 @@
 
 The Starfall Defence Corps Academy is a structured training programme that teaches Ansible automation through military-themed missions. Each mission presents a realistic scenario where you'll use Ansible to secure, configure, and manage fleet infrastructure.
 
-**🚀 New cadet? Start here:** [enrol](#how-to-enrol) in [Mission 1.1 — Fleet Census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census), then work through the missions in order.
+**🚀 New cadet? Start here:** [enrol](#how-to-enrol) in [Mission 0 — Reporting for Duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty) — a 15-minute environment shakeout that ends with your first green ARIA banner — then work through the missions in order.
 
 **📖 Want the full picture?** The [Course Outline](COURSE_OUTLINE.md) has the lore, rank progression, and detailed briefings for every mission.
 
 ## Missions
+
+### Mission 0 — Enrolment
+
+| Mission | Codename | Topic | Repo |
+|---------|----------|-------|------|
+| 0 | Reporting for Duty | Enrolment & environment check — first green banner in ~15 min | [mission-0-reporting-for-duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty) |
 
 ### Module 1 — Foundation
 
@@ -48,7 +54,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 
 1. Navigate to your assigned mission repo (see table above)
 2. Click **Use this template** > **Create a new repository** (this creates your own copy)
-3. Name your repo (e.g., `mission-1-1-fleet-census`), set it to **Public**
+3. Name your repo (e.g., `mission-0-reporting-for-duty`), set it to **Public**
 4. Clone your new repo locally and run `make doctor` — it checks your machine is mission-ready
 5. Follow the README inside: `make setup` boots the lab, `make test` asks ARIA to verify your work
 6. Done? `make submit` branches, commits, pushes, and opens your review PR in one command
