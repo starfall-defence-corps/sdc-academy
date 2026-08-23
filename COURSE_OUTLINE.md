@@ -104,23 +104,26 @@ Student opens PR in their own repo
 
 ---
 
-## Rank Progression (Starfleet)
+## Rank Progression (Royal Navy)
 
-| Rank | Module | Earned By | Scaffolding |
-|------|--------|-----------|-------------|
-| **Cadet** | 1.1–1.2 | Enrolling | Full: inventory provided, skeleton playbook, all hints, tests visible |
-| **Ensign** | 1.3–1.5 + Gateway | Passing Gateway Simulation | Reduced: inventory provided, minimal skeleton, some hints |
-| **Lieutenant JG** | 2.1–2.2 | Completing WHT + Compliance | Minimal: blank playbook, no hints, tests visible |
-| **Lieutenant** | 2.3–2.6 | Completing fleet ops + pipeline + incident response | Mission briefing + pass/fail only |
-| **Lt. Commander** | Master Sim | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
-| **Commander** | Module 3 | Completing 2+ MOS specializations | Mission briefing only — design own approach |
-| **Captain** | Final Exercise | Passing Operation: Enduring Shield | Red team scenario — write own requirements, then implement |
+Cadets hold a single continuous commission in the Starfall Defence Corps — an
+officer's career, Midshipman to Commodore. Officer ranks only: the SDC does not
+mix officer and rating ranks.
 
-*Fleet Captain through Fleet Admiral: reserved for instructors, mentors, and course contributors.*
+| Rank | Milestone | Earned By | Scaffolding |
+|------|-----------|-----------|-------------|
+| **Midshipman** | Mission 0 | Reporting for duty | Full: guided shakeout, every hint |
+| **Sub-Lieutenant** | Module 1 (1.1–1.5) | Foundation training | Guided: inventory provided, skeletons, hints |
+| **Lieutenant** | Gateway + Module 2 (2.1–2.6) | Passing the Gateway Simulation | Reduced: mission briefing + pass/fail |
+| **Lieutenant Commander** | Master Simulation | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
+| **Commander** | Modules 3–4 | Completing 2+ MOS specialisations | Mission briefing only — design your own approach |
+| **Captain (RN)** | Final Exercise | Passing Operation: Enduring Shield | Write your own requirements, then implement |
+
+*Commodore and above (flag rank): reserved for instructors, mentors, and course contributors.*
 
 ### Scaffolding Principle
 
-At Cadet, you fill in blanks. By Captain, you're writing the requirements yourself. This mirrors professional development: juniors follow procedures, seniors design them.
+At Midshipman, you fill in blanks. By Captain, you're writing the requirements yourself. This mirrors professional development: juniors follow procedures, seniors design them.
 
 ---
 
@@ -179,27 +182,27 @@ The Voidborn's agents — each a real-world anti-pattern:
 
 | Villain | Anti-Pattern | First Appears |
 |---------|-------------|---------------|
-| **Agent Chmod-777** | "Just give it all the permissions, it works now" | 1.1 |
+| **Saboteur Chmod-777** | "Just give it all the permissions, it works now" | 1.1 |
 | **The SSH Root Fairy** | Leaves root login enabled everywhere | 1.2 |
-| **Corporal Copy-Paste** | Copies configs from forums without reading them | 1.4 |
-| **Colonel Hardcoded-Password** | Secrets in plaintext, passwords in repos | 1.5 |
-| **Private YOLO-Deploy** | Pushes to prod untested. Friday. 16:59. | 2.1 |
-| **Captain Unpatched** | "If it works, don't update it" (last patched: 2019) | 2.2 |
+| **Marauder Copy-Paste** | Copies configs from forums without reading them | 1.4 |
+| **Warlord Hardcoded-Password** | Secrets in plaintext, passwords in repos | 1.5 |
+| **Reaver YOLO-Deploy** | Pushes to prod untested. Friday. 16:59. | 2.1 |
+| **Corsair Unpatched** | "If it works, don't update it" (last patched: 2019) | 2.2 |
 | **The Phantom Logstash** | Broke the Elastic Stack, left the fleet blind | MOS 4 |
-| **General Snowflake** | Every server hand-configured. "Documentation? It's in my head." | Master Sim |
+| **Dread Admiral Snowflake** | Every server hand-configured. "Documentation? It's in my head." | Master Sim |
 
-*General Snowflake is the final boss. The General's motto: "But this server is special." No. It isn't.*
+*Dread Admiral Snowflake is the final boss. The Admiral's motto: "But this server is special." No. It isn't.*
 
 ---
 
 # Mission 0: Reporting for Duty (Enrolment)
 
-> **Rank**: Recruit → Cadet
+> **Rank**: Midshipman
 > **Time**: ~15 minutes
 > **Lab**: One Docker node (`sdc-gate`) — locally or via GitHub Codespaces
 > **Repo**: [mission-0-reporting-for-duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty)
 
-Not a training mission — an arrival. Recruits enrol via **Use this template**, run `make doctor` (which checks the entire Foundation-module toolchain: Docker, Ansible, Python, Git, gh), boot a one-node lab, ping it with Ansible, and file a duty report with a single ad-hoc command. First green ARIA banner in ~15 minutes.
+Not a training mission — an arrival. New cadets enrol via **Use this template**, run `make doctor` (which checks the entire Foundation-module toolchain: Docker, Ansible, Python, Git, gh), boot a one-node lab, ping it with Ansible, and file a duty report with a single ad-hoc command. First green ARIA banner in ~15 minutes.
 
 **Purpose**: isolate every environment problem — dead Docker daemon, busy ports, missing tools — *before* any Ansible content is at stake. If Mission 0 is green, the machine is cleared for Module 1. No Ansible knowledge required; every command is given verbatim.
 
@@ -207,15 +210,15 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 # Module 1: Basic Training (Foundation)
 
-> **Rank**: Cadet → Ensign
+> **Rank**: Sub-Lieutenant
 > **Time**: 12–15 hours
 > **Lab**: Docker + Molecule — locally with Docker Desktop, or zero-setup via GitHub Codespaces
 > **Concludes with**: Gateway Simulation — "Operation: First Contact"
 
 ## 1.1 Fleet Census (SSH, Inventory & Ad-Hoc Commands)
 
-**Rank**: Cadet
-**Villain**: Agent Chmod-777
+**Rank**: Sub-Lieutenant
+**Villain**: Saboteur Chmod-777
 
 ### What You'll Learn
 - How Ansible connects (SSH-based, agentless — nothing to install on targets)
@@ -226,7 +229,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 - What idempotency means
 
 ### Briefing
-*"Cadet, the fleet's asset registry is chaos. Half our ships aren't catalogued. Agent Chmod-777 has been leaving permissions set to 777 — anyone can read, write, execute anything. Find them. Fix them."*
+*"Cadet, the fleet's asset registry is chaos. Half our ships aren't catalogued. Saboteur Chmod-777 has been leaving permissions set to 777 — anyone can read, write, execute anything. Find them. Fix them."*
 
 ### Content
 1. **Guide**: "Reporting for Duty — Your First Connection"
@@ -261,7 +264,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 ## 1.2 Your First Operations Order (Playbook Fundamentals)
 
-**Rank**: Cadet
+**Rank**: Sub-Lieutenant
 **Villain**: The SSH Root Fairy
 **Builds on**: 1.1 inventory
 
@@ -302,7 +305,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 ## 1.3 Managing the Fleet (Services, Packages & Config Files)
 
-**Rank**: Cadet → Ensign candidate
+**Rank**: Sub-Lieutenant
 **Builds on**: 1.1 inventory + 1.2 playbook structure
 
 ### What You'll Learn
@@ -344,8 +347,8 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 ## 1.4 Adapting to Conditions (Variables, Facts, Templates & Conditionals)
 
-**Rank**: Ensign candidate
-**Villain**: Corporal Copy-Paste
+**Rank**: Sub-Lieutenant
+**Villain**: Marauder Copy-Paste
 **Builds on**: 1.1–1.3 (making them flexible)
 
 ### What You'll Learn
@@ -357,7 +360,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 - Registered variables
 
 ### Briefing
-*"Fleet runs mixed OS — Ubuntu and Rocky. Corporal Copy-Paste has written 47 separate playbooks. No more. One playbook. All ships."*
+*"Fleet runs mixed OS — Ubuntu and Rocky. Marauder Copy-Paste has written 47 separate playbooks. No more. One playbook. All ships."*
 
 ### Content
 1. **Guide**: "Adapting to the Fleet"
@@ -389,8 +392,8 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 ## 1.5 Standard Operating Procedures (Roles, Vault & Git Workflow)
 
-**Rank**: Ensign candidate
-**Villain**: Colonel Hardcoded-Password
+**Rank**: Sub-Lieutenant
+**Villain**: Warlord Hardcoded-Password
 **Builds on**: ALL of 1.1–1.4, restructured
 
 ### What You'll Learn
@@ -401,7 +404,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 - `.gitignore` done right
 
 ### Briefing
-*"Colonel Hardcoded-Password embedded database credentials on three fleet nodes. Plaintext. On the filesystem. This ends now. Everything you've built — SSH hardening, services, templates — restructure into a proper SOP (role). Secrets go in the Crypto Cell (Vault). Everything through change authorisation (PRs)."*
+*"Warlord Hardcoded-Password embedded database credentials on three fleet nodes. Plaintext. On the filesystem. This ends now. Everything you've built — SSH hardening, services, templates — restructure into a proper SOP (role). Secrets go in the Crypto Cell (Vault). Everything through change authorisation (PRs)."*
 
 ### Content
 1. **Guide**: "Building Your SOPs"
@@ -415,7 +418,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
    - Create vault-encrypted variables
    - Decrypt, edit, re-encrypt
    - Reference vault vars in playbooks
-   - Detective exercise: find Colonel Hardcoded-Password's plaintext credentials on the fleet filesystem
+   - Detective exercise: find Warlord Hardcoded-Password's plaintext credentials on the fleet filesystem
      - `ansible all -m shell -a "cat /opt/fleet-db-creds.txt"` — why plaintext secrets on disk are a compromise waiting to happen
 
 3. **Mission**: "Operation: Clean House"
@@ -465,22 +468,22 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 | 65–75 min | Passed |
 | 75+ min | RTB — retry |
 
-> **Rank Earned**: Ensign
+> **Rank Earned**: Lieutenant
 > **Badge**: Starfall Basic Training
 
 ---
 
 # Module 2: Advanced Individual Training (Proficiency)
 
-> **Rank**: Lieutenant JG → Lieutenant → Lt. Commander
+> **Rank**: Lieutenant → Lieutenant Commander
 > **Time**: 16–20 hours
 > **Lab**: Docker containers (all missions)
 > **Concludes with**: Master Simulation — "Operation: Iron Curtain"
 
 ## 2.1 Weapon Handling Test (Molecule Deep Dive)
 
-**Rank**: Lieutenant JG (blank playbook, no hints, tests visible)
-**Villain**: Private YOLO-Deploy
+**Rank**: Lieutenant (blank playbook, no hints, tests visible)
+**Villain**: Reaver YOLO-Deploy
 **Builds on**: Role from 1.5
 
 ### What You'll Learn
@@ -492,7 +495,7 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 - Molecule in GitHub Actions
 
 ### Briefing
-*"Private YOLO-Deploy pushed a 'hardening' role to production. No tests. No review. Friday. 16:59. Three nodes down. 'I ran it locally and it worked.' This is why we have the Weapon Handling Test. You don't deploy until Molecule confirms it works."*
+*"Reaver YOLO-Deploy pushed a 'hardening' role to production. No tests. No review. Friday. 16:59. Three nodes down. 'I ran it locally and it worked.' This is why we have the Weapon Handling Test. You don't deploy until Molecule confirms it works."*
 
 ### Content
 1. **Guide**: "Weapon Handling Test — Prove It Before You Deploy It"
@@ -528,8 +531,8 @@ Not a training mission — an arrival. Recruits enrol via **Use this template**,
 
 ## 2.2 Compliance as Code (CIS Benchmarks & Security Baselines)
 
-**Rank**: Lieutenant JG
-**Villain**: Captain Unpatched
+**Rank**: Lieutenant
+**Villain**: Corsair Unpatched
 **Builds on**: Tested role from 2.1
 
 ### What CIS and STIG Are
@@ -611,7 +614,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 ## 2.4 The Automated Defence Line (CI/CD Pipelines)
 
 **Rank**: Lieutenant
-**Villain**: Private YOLO-Deploy (final confrontation)
+**Villain**: Reaver YOLO-Deploy (final confrontation)
 **Builds on**: Everything — entire workflow automated
 
 ### What You'll Learn
@@ -655,7 +658,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ## Master Simulation: "Operation: Iron Curtain"
 
-> **General Snowflake. 6 servers, every one different. Hand-built. Undocumented. Your mission: uniform, tested, automated compliance.**
+> **Dread Admiral Snowflake. 6 servers, every one different. Hand-built. Undocumented. Your mission: uniform, tested, automated compliance.**
 
 **Prerequisites**: All Module 2 complete
 **Format**: 6 Docker containers (4 Ubuntu + 2 Rocky). 3.5 hours. One repo. One pipeline.
@@ -687,14 +690,14 @@ Both: **documented, measurable, repeatable security configuration that can be au
 | 3.5–4 hrs | Passed |
 | 4+ hrs | Return to AIT — retry |
 
-> **Rank Earned**: Lt. Commander
+> **Rank Earned**: Lieutenant Commander
 > **Badge**: Iron Curtain — Master Operator
 
 ---
 
 # Module 3: MOS Specialization
 
-> Available from Ensign. Mission briefing only. 2+ MOS = Commander rank.
+> Available from Lieutenant. Mission briefing only. 2+ MOS = Commander rank.
 >
 > **Status: in development** — MOS mission repos are not yet published.
 
@@ -790,7 +793,7 @@ Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level. Lynis hardenin
 ## FM-6: FAQ & Simulation Hub
 - **Why Ansible?** Agentless, YAML, dominant in defence/government.
 - **Need to code?** No. YAML + CLI.
-- **Why Molecule?** "I ran it and it looked fine" is how General Snowflake won.
+- **Why Molecule?** "I ran it and it looked fine" is how Dread Admiral Snowflake won.
 - **CIS vs STIG?** CIS = industry. STIG = DoD. Defence = STIG. Everyone else = CIS L1.
 - **Use at work?** Open-source tools, public benchmarks, production patterns.
 - **Not military?** Framing is flavour. "Mission" instead of "exercise."
@@ -800,7 +803,7 @@ Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level. Lynis hardenin
 
 # Final Exercise: "Operation: Enduring Shield"
 
-> Available after Lt. Commander. Pass → Captain.
+> Available after Lieutenant Commander. Pass → Captain.
 >
 > **Status: in development** — the exercise repo is not yet published.
 
@@ -824,7 +827,7 @@ Using **only playbooks/roles from the course**:
 
 > **Rank Earned**: Captain
 > **Badge**: Starfall Defence Corps — Captain's Commission
-> *"You detect, contain, and remediate through code. General Snowflake's fleet fears you."*
+> *"You detect, contain, and remediate through code. Dread Admiral Snowflake's fleet fears you."*
 
 ---
 
