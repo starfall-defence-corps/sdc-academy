@@ -17,7 +17,7 @@ No. YAML is structured data, not a programming language. If you can write a bull
 
 ### 3. Why Molecule?
 
-"I ran it and it looked fine" is how General Snowflake operated, and we all know how that ended. Molecule gives you automated, repeatable proof that your infrastructure code works. It spins up containers, applies your role, runs assertions, and tears everything down. No human eyeballs required.
+"I ran it and it looked fine" is how Dread Admiral Snowflake operated, and we all know how that ended. Molecule gives you automated, repeatable proof that your infrastructure code works. It spins up containers, applies your role, runs assertions, and tears everything down. No human eyeballs required.
 
 ### 4. CIS vs STIG — what's the difference?
 
@@ -45,7 +45,7 @@ Module 1 (Missions 1.1–1.5): approximately 6–8 hours. Module 2 (Missions 2.1
 
 ### 10. What rank do I earn?
 
-You begin at **Cadet**. Completing Module 1 and the Gateway Simulation earns **Ensign**. Module 2 missions progress you through **Lieutenant JG** and **Lieutenant**. Completing the Master Simulation earns **Lt. Commander**. Each rank is earned, not given.
+You begin as a **Midshipman**. Completing Module 1 earns **Sub-Lieutenant**; passing the Gateway Simulation earns **Lieutenant** (held through Module 2). Completing the Master Simulation earns **Lieutenant Commander**. Each rank is earned, not given.
 
 ### 11. Can I skip ahead?
 
@@ -65,8 +65,8 @@ All simulations are timed, proctored by ARIA, and designed to test accumulated s
 
 | Simulation | Codename | Time | Skills Tested | Rank Earned | Repo |
 |------------|----------|------|---------------|-------------|------|
-| Gateway | Operation: First Contact | 75 min | All Module 1 (inventory, playbooks, roles, Vault, multi-OS) | Ensign | `gateway-simulation` |
-| Master | Operation: Iron Curtain | 3.5 hrs | All Module 2 (Molecule, CIS, rolling updates, CI/CD, incident response) | Lt. Commander | `master-simulation` |
+| Gateway | Operation: First Contact | 75 min | All Module 1 (inventory, playbooks, roles, Vault, multi-OS) | Lieutenant | `gateway-simulation` |
+| Master | Operation: Iron Curtain | 3.5 hrs | All Module 2 (Molecule, CIS, rolling updates, CI/CD, incident response) | Lieutenant Commander | `master-simulation` |
 
 ---
 
@@ -99,7 +99,7 @@ source venv/bin/activate
 
 ### Master Simulation — Operation: Iron Curtain
 
-**What to expect**: Four missions in 3.5 hours. You inherit General Snowflake's hand-built fleet — six nodes, no compliance baseline, no tests, no automation. You will assess all six against CIS benchmarks with Lynis, build a tagged hardening role with Molecule tests, construct a CI/CD pipeline with drift detection, and respond to a live incident. This is everything.
+**What to expect**: Four missions in 3.5 hours. You inherit Dread Admiral Snowflake's hand-built fleet — six nodes, no compliance baseline, no tests, no automation. You will assess all six against CIS benchmarks with Lynis, build a tagged hardening role with Molecule tests, construct a CI/CD pipeline with drift detection, and respond to a live incident. This is everything.
 
 **Prerequisites**: All of Module 1, all of Module 2 (Missions 2.1 through 2.4), and the Gateway Simulation. You must be comfortable with Molecule, Testinfra, CIS controls, rolling updates, ansible-lint, CI pipelines, and incident investigation.
 
