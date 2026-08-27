@@ -113,7 +113,7 @@ mix officer and rating ranks.
 | Rank | Milestone | Earned By | Scaffolding |
 |------|-----------|-----------|-------------|
 | **Midshipman** | Mission 0 | Reporting for duty | Full: guided shakeout, every hint |
-| **Sub-Lieutenant** | Module 1 (1.1–1.5) | Foundation training | Guided: inventory provided, skeletons, hints |
+| **Sub-Lieutenant** | Module 1 (1.1–1.6) | Foundation training | Guided: skeletons + hints (1.6: build the inventory yourself) |
 | **Lieutenant** | Gateway + Module 2 (2.1–2.6) | Passing the Gateway Simulation | Reduced: mission briefing + pass/fail |
 | **Lieutenant Commander** | Master Simulation | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
 | **Commander** | Modules 3–4 | Completing 2+ MOS specialisations | Mission briefing only — design your own approach |
@@ -138,7 +138,8 @@ At Midshipman, you fill in blanks. By Captain, you're writing the requirements y
 | 1.3 Clean Sweep | Services, packages, file management | 1.1 inventory, 1.2 playbook structure |
 | 1.4 One Playbook Many Ships | Variables, facts, templates, conditionals | 1.1–1.3 everything (new OS families) |
 | 1.5 Clean House | Roles, Vault, Git workflow | Restructures ALL 1.2–1.4 into roles |
-| Gateway | All Module 1 combined | Everything 1.1–1.5 under pressure |
+| 1.6 Inventory from Nothing | Host discovery, service fingerprinting, dynamic inventory | 1.1 inventory — but nothing is provided; discover it |
+| Gateway | All Module 1 combined | Everything 1.1–1.6 under pressure |
 | 2.1 WHT | Molecule testing | Tests the roles from 1.5 |
 | 2.2 Baseline | CIS benchmarks, compliance | Extends roles from 1.5 with new controls |
 | 2.3 Fleet Sync | Multi-host orchestration | Deploys roles from 1.5/2.2 across fleet |
@@ -186,6 +187,7 @@ The Voidborn's agents — each a real-world anti-pattern:
 | **The SSH Root Fairy** | Leaves root login enabled everywhere | 1.2 |
 | **Marauder Copy-Paste** | Copies configs from forums without reading them | 1.4 |
 | **Warlord Hardcoded-Password** | Secrets in plaintext, passwords in repos | 1.5 |
+| **Nyx, the Signal Ghost** | Static maps for a fleet that never keeps the same address | 1.6 |
 | **Reaver YOLO-Deploy** | Pushes to prod untested. Friday. 16:59. | 2.1 |
 | **Corsair Unpatched** | "If it works, don't update it" (last patched: 2019) | 2.2 |
 | **The Phantom Logstash** | Broke the Elastic Stack, left the fleet blind | MOS 4 |
@@ -433,6 +435,48 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
    - [ ] Practice: Found the Colonel's secret in git history
    - [ ] Mission: Clean House — role structure, vault, CI green
    - [ ] Can do: branch → PR workflow without instructions
+
+---
+
+## 1.6 Inventory from Nothing (Discovery, Facts & Dynamic Inventory)
+
+**Rank**: Sub-Lieutenant
+**Villain**: Nyx, the Signal Ghost
+**Builds on**: 1.1 inventory & facts — but this time nothing is handed to you
+
+### What You'll Learn
+- Host discovery from a bare subnet (`nmap -sn`) — no inventory provided
+- Service fingerprinting: inferring a node's role from its open service port
+- Building a grouped static inventory from live evidence
+- A facts sweep into a machine-checkable fleet report (incl. a live local fact)
+- **Dynamic inventory** — an executable inventory / the `community.general.nmap` plugin that re-discovers the fleet at runtime and survives address rotation
+
+### Briefing
+*"Mission 1.1 handed you the fleet roster. You will not always be so lucky. Nyx, the Signal Ghost, keeps our forward posts alive but nameless — she rotates their addressing faster than any static map can follow. You have one fact: the subnet, 172.30.0.0/24. Discover the fleet, fingerprint each node by the service it speaks, and build a map that holds even while Nyx moves it. This is the last thing you learn before the Gateway — because the Gateway hands you a boarded post and no roster at all."*
+
+### Content
+1. **Guide**: "Mapping from Nothing"
+   - Board the recon node (`make shell`) — nmap + ansible live on the subnet
+   - Host discovery vs. port/service fingerprinting; the port→role legend (80/5432/6379; 8080 no-SSH = decoy)
+   - Grouped inventory from discovered IPs; verifying with `ansible … -m ping`
+   - Facts sweep → fleet report; the `ansible_local.sdc.nonce` proof-of-contact fact
+
+2. **Practice Field**: "The Signal Ghost"
+   - Sweep the subnet, separate managed nodes from the decoy
+   - Fingerprint roles by service port
+   - `make rotate` — watch a static inventory go stale, then rebuild it dynamically
+
+3. **Mission**: "Operation: Inventory from Nothing"
+   - Discover → fingerprint → grouped `hosts.yml` → facts report → **dynamic inventory**
+   - Capstone: the grader rotates the fleet's IPs; only a discovery-based inventory survives
+   - No inventory skeleton — you build it from the subnet up
+
+4. **Checklist**:
+   - [ ] Read: Mapping from Nothing
+   - [ ] Practice: Signal Ghost (discover, fingerprint, exclude the decoy)
+   - [ ] Practice: survived `make rotate` with a dynamic inventory
+   - [ ] Mission: Inventory from Nothing — discovery, grouping, facts report, dynamic inventory, CI green
+   - [ ] Can do: walk into an unknown subnet and produce a correct grouped inventory
 
 ---
 
