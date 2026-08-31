@@ -40,7 +40,13 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 2.6 | Counterattack | Incident response — persistence hunt & eradication, credential rotation, rolling remediation | [mission-2-6-counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) |
 | **Master** | **Operation: Iron Curtain** | **Capstone assessment — all Module 2 skills, 3.5 hr** | [master-simulation](https://github.com/starfall-defence-corps/master-simulation) |
 
-**Module 3 — MOS Specialisations** (Lieutenant Commander · mostly in development):
+**Module 3 — MOS Specialisations · Build Your Battle Rattle** (Lieutenant Commander · mostly in development):
+
+> Module 3 makes your Module-2 maneuvers **reusable across unfamiliar terrain**. Each
+> specialization produces a parameterised `runbooks/<verb>.yml` playbook for your personal
+> **battle rattle** — the portfolio you carry into the Final Exercise — graded for
+> *portability* by re-running it under a fresh scenario (hardcoded fails, parameterised
+> survives). See the [Course Outline](COURSE_OUTLINE.md#module-3-mos-specialization--build-your-battle-rattle).
 
 | MOS | Mission | Skills | Repo |
 |-----|---------|--------|------|
