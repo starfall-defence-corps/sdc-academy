@@ -739,13 +739,48 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-# Module 3: MOS Specialization
+# Module 3: MOS Specialization — Build Your Battle Rattle
 
 > Available from Lieutenant. Mission briefing only. 2+ MOS = Commander rank.
 >
-> **Status: in development** — MOS mission repos are not yet published.
+> **Status: in development** — MOS-4 shipped; MOS-5 (the battle-rattle runbook set) building next.
+
+Module 2 taught you the maneuvers. Module 3 makes them **reusable across unfamiliar
+terrain**. Every specialization here produces a durable, parameterised playbook that
+lands in your personal **battle rattle** — the runbook portfolio you carry into the
+Final Exercise and into real cyber exercises. The course output is a *tool*, not just a
+certificate.
+
+### The Portfolio Contract
+
+Every Module-3 capstone playbook must be:
+
+- **Parameterised** — targets, indicators, hosts, credentials, and services come from
+  variables / inventory, never hardcoded. (MOS-4 already complies: its telemetry role
+  references the collector *by name*, so it survives the SIEM relocating — a hardcoded
+  IP goes blind. That name-vs-hardcoded discriminator *is* the parameterisation test.)
+- **Canonically located** — capstone deliverables land at `runbooks/<verb>.yml` in your
+  fork, so the set composes into one portfolio.
+- **Proven portable, not proven-once** — ARIA grades reusability by **re-executing your
+  playbook under a second, fresh nonce**: the lab plants two independent nonce scenarios,
+  invokes the *same* playbook against both, and requires both to take effect (all nodes,
+  liveness preserved, idempotent). A solution hardcoded to one scenario passes exactly
+  one and fails the other. Deterministic; gameable only by *actually* parameterising.
+
+ARIA's PR review adds an **objective** hygiene checklist (required files present,
+variables documented, no hardcoded lab IPs where a variable is required, no plaintext
+secrets, README examples match the `make test` contract) — but, as everywhere in the
+Academy, the **pass/fail authority is deterministic pytest**, never a subjective score.
+
+> **Terrain note.** MOS-1/2/3/6 (Windows, network gear, Kubernetes, cloud) need
+> infrastructure beyond the Docker skeleton and ship later on the planned Terraform +
+> Hetzner VM labs. **Commander is never gated on them** — the two skeleton-buildable
+> tracks (MOS-4 Detection, shipped, + MOS-5 IR Automation, building) already satisfy
+> "2+ MOS." The infra-heavy tracks are stretch specializations, not prerequisites.
 
 ## MOS 1: Windows Hardening
+
+> **Terrain**: Windows containers / VM lab — ships on the planned Terraform + Hetzner labs.
 - WinRM, Kerberos/CredSSP/NTLM
 - `win_feature`, `win_service`, `win_regedit`, `win_security_policy`
 - CIS Windows Server, AD hardening
@@ -753,12 +788,16 @@ Both: **documented, measurable, repeatable security configuration that can be au
 - Molecule with Windows containers
 
 ## MOS 2: Network & Firewall Automation
+
+> **Terrain**: virtual network devices / VM lab — ships on the planned Terraform + Hetzner labs.
 - `ios_config`, `nxos_config`, `eos_config`, `junos_config`
 - **pfSense**: `pfsensible.core` — rules, aliases, VLANs
 - Network inventory, config backup/restore
 - ACL hardening, compliance
 
 ## MOS 3: Container & Kubernetes Security
+
+> **Terrain**: K8s cluster / VM lab — ships on the planned Terraform + Hetzner labs.
 - CIS Docker Benchmark
 - K8s hardening (kubeadm, RBAC, network policies)
 - Trivy scanning, Falco runtime security
@@ -798,14 +837,40 @@ This is critical and often overlooked. During a real incident, the red team went
 - Wazuh as complement
 - Alert routing
 
-## MOS 5: Incident Response Automation
-- Forensic collection (memory, disk, logs)
-- Containment: isolation, credential rotation
-- IOC scanning fleet-wide
-- IR runbooks: human decides, Ansible executes
-- Integration: TheHive, Shuffle, Elastic SIEM
+## MOS 5: Incident Response Automation — The Battle Rattle
+
+> **Terrain**: the standard Docker skeleton (arm64-buildable). **Building next** — the
+> concrete deliverable is your reusable IR runbook set.
+
+This MOS *is* the battle rattle. Rather than abstract theory, its entire deliverable is a
+set of parameterised, portfolio-grade IR playbooks — the tools you carry into the Final
+Exercise. Each is graded cheese-proof by the **dual-nonce re-execution** harness from the
+Portfolio Contract above: the lab plants two independent scenarios, your one playbook must
+handle both.
+
+The runbook set (`runbooks/<verb>.yml`), built up across phases:
+
+- **`block-ioc.yml`** — block a fleet-wide indicator, parameterised by the indicator. *(First
+  build increment: extends Mission 2.5's block grader to prove portability — same playbook,
+  two unseen IOCs, both must land on all nodes with liveness preserved.)*
+- **`collect-triage.yml`** — read-only forensic collection → a machine-verifiable report,
+  parameterised by what to collect and from where.
+- **`rotate-creds.yml`** — rotate a compromised local/service credential fleet-wide,
+  parameterised by which principal.
+- **`restore-service.yml`** — restore a downed scored service from a known-good declarative
+  state, parameterised by which service. *(The one battle-rattle verb not yet seen elsewhere
+  in the course.)*
+
+Completing MOS-5 *is* assembling the portfolio. Strongly recommended as one of your 2+ MOS,
+because it feeds the Final Exercise directly.
+
+**Reference (deep/VM-based extensions)**: forensic memory/disk collection, integration with
+TheHive / Shuffle / Elastic SIEM — beyond the Docker skeleton; documented for the field, not
+graded here.
 
 ## MOS 6: Cloud Infrastructure Hardening
+
+> **Terrain**: AWS/Azure accounts — ships on the planned Terraform + Hetzner/cloud labs.
 - AWS: Security Groups, IAM, CloudTrail, GuardDuty
 - Azure: NSGs, Key Vault, Defender
 - Cloud CIS Benchmarks
@@ -867,10 +932,13 @@ Ubuntu 22.04 + Rocky 9. Control → Module → Example → Level. Lynis hardenin
 - Breadcrumbs in logs
 
 ### Mission
-Using **only playbooks/roles from the course**:
-1. **Detect**: Compliance + monitoring automation → find anomalies
-2. **Contain**: Isolate, disable accounts, block services
-3. **Remediate**: Restore CIS baseline
+Fought with **your battle rattle** — the `runbooks/<verb>.yml` portfolio you built and
+proved portable across Module 3 (plus the roles from earlier modules). This is where the
+portfolio earns its keep: the exercise scenario uses fresh values, so only *parameterised*
+runbooks survive.
+1. **Detect**: Compliance + monitoring automation (`collect-triage.yml`) → find anomalies
+2. **Contain**: Isolate, disable accounts, block services (`block-ioc.yml`, `rotate-creds.yml`)
+3. **Remediate**: Restore CIS baseline + downed services (`restore-service.yml`)
 4. **Report**: PR with incident report, delta, evidence
 
 **Time**: 2.5 hours. Scored on detection + containment + remediation + report.
