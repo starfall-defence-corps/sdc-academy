@@ -40,7 +40,13 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 2.6 | Counterattack | Incident response — persistence hunt & eradication, credential rotation, rolling remediation | [mission-2-6-counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) |
 | **Master** | **Operation: Iron Curtain** | **Capstone assessment — all Module 2 skills, 3.5 hr** | [master-simulation](https://github.com/starfall-defence-corps/master-simulation) |
 
-> Modules 3–4 (MOS specialisations) and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.
+**Module 3 — MOS Specialisations** (Lieutenant Commander · mostly in development):
+
+| MOS | Mission | Skills | Repo |
+|-----|---------|--------|------|
+| 4 | Eyes Everywhere | Telemetry at scale — rsyslog forwarding, audit, an osquery-style agent, behavioural collector verification | [mission-3-4-eyes-everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) |
+
+> The remaining Modules 3–4 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.
 
 ### Field Manuals — Reference Library
 
