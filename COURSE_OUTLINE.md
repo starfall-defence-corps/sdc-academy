@@ -768,6 +768,12 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 **Villain**: The Phantom Logstash — *broke the Elastic Stack and left the fleet blind*
 
+### Mission 1: Eyes Everywhere — Telemetry at Scale ✅ SHIPPED
+
+> **Rank**: Lieutenant Commander · **Repo**: [mission-3-4-eyes-everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere)
+
+The MOS-4 opener, and the first Module 3 mission. Blue teams lose exercises for lack of *visibility*, not lack of hardening. The cadet builds one Ansible `telemetry` role that deploys observability fleet-wide — **journald→rsyslog forwarding**, **audit rules + a container-safe userspace audit shim**, and a **provided osquery-style agent** — and ARIA grades it **behaviourally**: fresh-nonce events generated on every node must *actually arrive* at a central collector (config that looks right but delivers nothing fails). Capstone: **The Phantom Logstash relocates the SIEM** — a role that referenced the collector by name re-onboards the fleet automatically, a role that hardcoded its IP goes blind. Lightweight stdlib collector (buildable on arm64 Docker); the full Elastic-stack deployment + hardening below seeds later MOS-4 missions.
+
 ### Deployment
 - Elasticsearch cluster: nodes, shards, security, TLS
 - Kibana deployment and configuration
