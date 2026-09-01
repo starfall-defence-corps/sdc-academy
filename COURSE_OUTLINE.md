@@ -141,7 +141,7 @@ At Midshipman, you fill in blanks. By Captain, you're writing the requirements y
 | 1.6 Inventory from Nothing | Host discovery, service fingerprinting, dynamic inventory | 1.1 inventory — but nothing is provided; discover it |
 | Gateway | All Module 1 combined | Everything 1.1–1.6 under pressure |
 | 2.1 WHT | Molecule testing | Tests the roles from 1.5 |
-| 2.2 Baseline | CIS benchmarks, compliance | Extends roles from 1.5 with new controls |
+| 2.2 Baseline | CIS benchmarks, compliance — timed H-45 baseline sprint + triage | Extends roles from 1.5 with new controls |
 | 2.3 Fleet Sync | Multi-host orchestration | Deploys roles from 1.5/2.2 across fleet |
 | 2.4 Defence in Depth | CI/CD automation | Automates testing from 2.1 + deployment |
 | 2.5 Noise Storm | Incident response (IR arc, act 1) | Applies Module 1–2 defences (SSH, firewall, roles, templates) under live attack |
@@ -617,10 +617,16 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
    > **Badge**: Compliance Officer
 
-4. **Mission**: "Operation: Baseline"
+4. **Mission**: "Operation: Baseline" — **the H-45 Baseline Sprint**
+   - Framed as a timed pre-exercise hardening sprint: readiness exercise VOIDBREAKER
+     goes hot in 45 minutes; baseline the whole fleet before the window opens
+   - **Triage under the clock**: P1 credential defence → P2 surface/persistence →
+     P3 evidence/hygiene, each tier applied fleet-wide before the next ("wide before deep")
    - **Extend 2.1 role** with CIS Level 1 (spaced repetition)
    - Filesystem, auth, network, logging, SSH
-   - Molecule-tested, Lynis as compliance measure, tagged
+   - Molecule-tested, Lynis as compliance measure, tagged (tags make triage executable)
+   - Honour-system sprint timer (ARIA grades correctness, not the clock); sets up the
+     live probing of Noise Storm (2.5)
 
 ---
 
