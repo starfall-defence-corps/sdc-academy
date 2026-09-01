@@ -743,7 +743,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 > Available from Lieutenant. Mission briefing only. 2+ MOS = Commander rank.
 >
-> **Status: in development** — MOS-4 shipped; MOS-5 (the battle-rattle runbook set) building next.
+> **Status: in development** — MOS-4 and MOS-5 (the battle-rattle runbook set) shipped and playable; MOS-1/2/3/6 need VM infra beyond the current lab and remain future work.
 
 Module 2 taught you the maneuvers. Module 3 makes them **reusable across unfamiliar
 terrain**. Every specialization here produces a durable, parameterised playbook that
@@ -775,7 +775,7 @@ Academy, the **pass/fail authority is deterministic pytest**, never a subjective
 > **Terrain note.** MOS-1/2/3/6 (Windows, network gear, Kubernetes, cloud) need
 > infrastructure beyond the Docker skeleton and ship later on the planned Terraform +
 > Hetzner VM labs. **Commander is never gated on them** — the two skeleton-buildable
-> tracks (MOS-4 Detection, shipped, + MOS-5 IR Automation, building) already satisfy
+> tracks (MOS-4 Detection + MOS-5 IR Automation, both shipped) already satisfy
 > "2+ MOS." The infra-heavy tracks are stretch specializations, not prerequisites.
 
 ## MOS 1: Windows Hardening
@@ -839,8 +839,9 @@ This is critical and often overlooked. During a real incident, the red team went
 
 ## MOS 5: Incident Response Automation — The Battle Rattle
 
-> **Terrain**: the standard Docker skeleton (arm64-buildable). **Building next** — the
-> concrete deliverable is your reusable IR runbook set.
+> **Terrain**: the standard Docker skeleton (arm64-buildable). **Shipped & playable** —
+> [`mission-3-5-battle-rattle`](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle)
+> (rank Lieutenant Commander, villain the Hydra). The concrete deliverable is your reusable IR runbook set.
 
 This MOS *is* the battle rattle. Rather than abstract theory, its entire deliverable is a
 set of parameterised, portfolio-grade IR playbooks — the tools you carry into the Final
