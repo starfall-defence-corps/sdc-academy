@@ -53,7 +53,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 4 | Eyes Everywhere | Telemetry at scale — rsyslog forwarding, audit, an osquery-style agent, behavioural collector verification | [mission-3-4-eyes-everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) |
 | 5 | Battle Rattle | Incident-response automation — four reusable `runbooks/<verb>.yml` (block-ioc, collect-triage, rotate-creds, restore-service), graded for portability by dual-nonce re-execution | [mission-3-5-battle-rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle) |
 
-> The remaining Modules 3–4 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.
+> The remaining Module 3 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.
 
 ### Field Manuals — Reference Library
 
