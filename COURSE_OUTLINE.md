@@ -116,7 +116,7 @@ mix officer and rating ranks.
 | **Sub-Lieutenant** | Module 1 (1.1–1.6) | Foundation training | Guided: skeletons + hints (1.6: build the inventory yourself) |
 | **Lieutenant** | Gateway + Module 2 (2.1–2.6) | Passing the Gateway Simulation | Reduced: mission briefing + pass/fail |
 | **Lieutenant Commander** | Master Simulation | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
-| **Commander** | Modules 3–4 | Completing 2+ MOS specialisations | Mission briefing only — design your own approach |
+| **Commander** | Module 3 | Completing 2+ MOS specialisations | Mission briefing only — design your own approach |
 | **Captain (RN)** | Final Exercise | Passing Operation: Enduring Shield | Write your own requirements, then implement |
 
 *Commodore and above (flag rank): reserved for instructors, mentors, and course contributors.*
