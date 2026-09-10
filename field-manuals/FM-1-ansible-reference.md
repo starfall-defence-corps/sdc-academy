@@ -1,5 +1,5 @@
 # FM-1: Ansible Module Reference
-> Starfall Defence Corps -- Field Manual
+> Starfall Defence Corps -- Field Manual · [🏠 Academy Hub](../README.md) · [📖 Course Outline](../COURSE_OUTLINE.md)
 
 Classification: UNCLASSIFIED // Training Use Only
 Revision: 1.0 | Date: 2187.04.03
