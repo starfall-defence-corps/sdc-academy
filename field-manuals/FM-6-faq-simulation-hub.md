@@ -1,5 +1,5 @@
 # FM-6: FAQ & Simulation Hub
-> Starfall Defence Corps — Field Manual
+> Starfall Defence Corps — Field Manual · [🏠 Academy Hub](../README.md) · [📖 Course Outline](../COURSE_OUTLINE.md)
 
 ---
 

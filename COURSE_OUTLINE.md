@@ -217,7 +217,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 > **Lab**: Docker + Molecule — locally with Docker Desktop, or zero-setup via GitHub Codespaces
 > **Concludes with**: Gateway Simulation — "Operation: First Contact"
 
-## 1.1 Fleet Census (SSH, Inventory & Ad-Hoc Commands)
+## [1.1 Fleet Census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census) (SSH, Inventory & Ad-Hoc Commands)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Saboteur Chmod-777
@@ -264,7 +264,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 1.2 Your First Operations Order (Playbook Fundamentals)
+## [1.2 Your First Operations Order](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) (Playbook Fundamentals)
 
 **Rank**: Sub-Lieutenant
 **Villain**: The SSH Root Fairy
@@ -305,7 +305,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 1.3 Managing the Fleet (Services, Packages & Config Files)
+## [1.3 Managing the Fleet](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) (Services, Packages & Config Files)
 
 **Rank**: Sub-Lieutenant
 **Builds on**: 1.1 inventory + 1.2 playbook structure
@@ -347,7 +347,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 1.4 Adapting to Conditions (Variables, Facts, Templates & Conditionals)
+## [1.4 Adapting to Conditions](https://github.com/starfall-defence-corps/mission-1-4-many-ships) (Variables, Facts, Templates & Conditionals)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Marauder Copy-Paste
@@ -392,7 +392,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 1.5 Standard Operating Procedures (Roles, Vault & Git Workflow)
+## [1.5 Standard Operating Procedures](https://github.com/starfall-defence-corps/mission-1-5-clean-house) (Roles, Vault & Git Workflow)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Warlord Hardcoded-Password
@@ -438,7 +438,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 1.6 Inventory from Nothing (Discovery, Facts & Dynamic Inventory)
+## [1.6 Inventory from Nothing](https://github.com/starfall-defence-corps/mission-1-6-inventory-from-nothing) (Discovery, Facts & Dynamic Inventory)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Nyx, the Signal Ghost
@@ -480,7 +480,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## Gateway Simulation: "Operation: First Contact"
+## [Gateway Simulation: "Operation: First Contact"](https://github.com/starfall-defence-corps/gateway-simulation)
 
 > **The Voidborn have compromised a forward observation post. Three nodes exposed. 75 minutes. Everything you've learned.**
 
@@ -524,7 +524,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 > **Lab**: Docker containers (all missions)
 > **Concludes with**: Master Simulation — "Operation: Iron Curtain"
 
-## 2.1 Weapon Handling Test (Molecule Deep Dive)
+## [2.1 Weapon Handling Test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) (Molecule Deep Dive)
 
 **Rank**: Lieutenant (blank playbook, no hints, tests visible)
 **Villain**: Reaver YOLO-Deploy
@@ -573,7 +573,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## 2.2 Compliance as Code (CIS Benchmarks & Security Baselines)
+## [2.2 Compliance as Code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) (CIS Benchmarks & Security Baselines)
 
 **Rank**: Lieutenant
 **Villain**: Corsair Unpatched
@@ -630,7 +630,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## 2.3 Fleet-Wide Operations (Multi-Host & Orchestration)
+## [2.3 Fleet-Wide Operations](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) (Multi-Host & Orchestration)
 
 **Rank**: Lieutenant (mission briefing + pass/fail only)
 **Builds on**: CIS-hardened, tested role → deployed across real fleet
@@ -661,7 +661,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## 2.4 The Automated Defence Line (CI/CD Pipelines)
+## [2.4 The Automated Defence Line](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) (CI/CD Pipelines)
 
 **Rank**: Lieutenant
 **Villain**: Reaver YOLO-Deploy (final confrontation)
@@ -706,7 +706,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## 2.5 Noise Storm (Incident Response — Act 1)
+## [2.5 Noise Storm](https://github.com/starfall-defence-corps/mission-2-5-noise-storm) (Incident Response — Act 1)
 
 **Rank**: Lieutenant
 **Villain**: An unknown adversary — a fixed-address probe hammering the fleet's SSH and web ports around the clock
@@ -731,7 +731,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## 2.6 Counterattack (Incident Response — Act 2)
+## [2.6 Counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) (Incident Response — Act 2)
 
 **Rank**: Lieutenant
 **Villain**: The intruder behind the noise storm — now inside the fleet
@@ -755,7 +755,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## Master Simulation: "Operation: Iron Curtain"
+## [Master Simulation: "Operation: Iron Curtain"](https://github.com/starfall-defence-corps/master-simulation)
 
 > **Dread Admiral Snowflake. 6 servers, every one different. Hand-built. Undocumented. Your mission: uniform, tested, automated compliance.**
 
@@ -858,7 +858,7 @@ Academy, the **pass/fail authority is deterministic pytest**, never a subjective
 - Trivy scanning, Falco runtime security
 - Pod security standards
 
-## MOS 4: Detection & Monitoring (Elastic Stack Focus)
+## [MOS 4: Detection & Monitoring](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) (Elastic Stack Focus)
 
 **Villain**: The Phantom Logstash — *broke the Elastic Stack and left the fleet blind*
 
@@ -892,7 +892,7 @@ This is critical and often overlooked. During a real incident, the red team went
 - Wazuh as complement
 - Alert routing
 
-## MOS 5: Incident Response Automation — The Battle Rattle
+## [MOS 5: Incident Response Automation — The Battle Rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle)
 
 > **Terrain**: the standard Docker skeleton (arm64-buildable). **Shipped & playable** —
 > [`mission-3-5-battle-rattle`](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle)

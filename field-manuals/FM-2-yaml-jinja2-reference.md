@@ -1,5 +1,5 @@
 # FM-2: YAML & Jinja2 Quick Reference
-> Starfall Defence Corps — Field Manual
+> Starfall Defence Corps — Field Manual · [🏠 Academy Hub](../README.md) · [📖 Course Outline](../COURSE_OUTLINE.md)
 
 YAML is the language you write Ansible in. Jinja2 is the template engine that makes it dynamic. Master both or your playbooks will break in ways the error messages will not explain.
 
