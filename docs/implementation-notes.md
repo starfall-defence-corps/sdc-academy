@@ -62,7 +62,7 @@ Cost control:
 
 ## Codespaces (SHIPPED — validated in sdc-academy#40, rolled out in #59)
 
-All mission repos except `mission-3-5-battle-rattle` carry this devcontainer (16 of 17). Validated on a real 4-core codespace: labs run **unchanged** under the DinD VM (systemd `running`, graceful test fail, clean destroy); cold provision ~5 min, `make setup` ~40s. Do **not** add the `sshd` feature — it collides with lab port 2222. Prebuilds don't transfer to student template copies, so the ~5 min first boot is per-student and one-time.
+All 17 mission repos carry this devcontainer. Validated on a real 4-core codespace: labs run **unchanged** under the DinD VM (systemd `running`, graceful test fail, clean destroy); cold provision ~5 min, `make setup` ~40s. Do **not** add the `sshd` feature — it collides with lab port 2222. Prebuilds don't transfer to student template copies, so the ~5 min first boot is per-student and one-time.
 
 Canonical config: [`mission-1-1-fleet-census/.devcontainer/devcontainer.json`](https://github.com/starfall-defence-corps/mission-1-1-fleet-census/blob/main/.devcontainer/devcontainer.json) (identical across the repos).
 
