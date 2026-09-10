@@ -102,6 +102,8 @@ Student opens PR in their own repo
 
 **Planned upgrade**: a centrally hosted ARIA **GitHub App** — the key lives in the backend, students never handle it, one deployment serves all students. Cost control: rate limiting per student, review only on PR open/update events, lightweight model for lint-level feedback, full model for substantive review.
 
+**Doc set per mission (deliberate)**: every repo ships `docs/BRIEFING.md`, `docs/HINTS.md`, and `CHECKLIST.md`. Teaching missions additionally ship a step-by-step `docs/EXERCISES.md`. Two categories deliberately do not: the simulations (Gateway, Master) are assessments — orders, not walkthroughs — and Missions 2.3/2.4 phase their walkthrough inside the BRIEFING itself.
+
 ---
 
 ## Rank Progression (Royal Navy)
