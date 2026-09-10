@@ -37,15 +37,15 @@ Every example is security-focused. You will never "install nginx and serve a web
 
 ### 8. What tools do I need?
 
-Docker Desktop, GNU Make, Python 3.10+, and Git. All free, all cross-platform. Windows users need WSL2. That is the entire toolchain. No paid licenses, no cloud accounts, no proprietary platforms.
+Docker Desktop, GNU Make, Ansible (`ansible-core`), Python 3.10+, Git, and the GitHub CLI (`gh` — used by `make submit`). All free, all cross-platform. Windows users need WSL2. That is the entire toolchain. No paid licenses, no cloud accounts, no proprietary platforms.
 
 ### 9. How long does the full course take?
 
-Module 1 (Missions 1.1–1.5): approximately 6–8 hours. Module 2 (Missions 2.1–2.4): approximately 8–12 hours. Gateway Simulation: 75 minutes. Master Simulation: 3.5 hours. Total curriculum: roughly 20–25 hours depending on your pace.
+Module 1 (Missions 1.1–1.6): approximately 12–15 hours. Module 2 (Missions 2.1–2.6): approximately 16–20 hours. Gateway Simulation: 75 minutes. Master Simulation: 3.5 hours. Total curriculum: roughly 30–40 hours depending on your pace.
 
 ### 10. What rank do I earn?
 
-You begin as a **Midshipman**. Completing Module 1 earns **Sub-Lieutenant**; passing the Gateway Simulation earns **Lieutenant** (held through Module 2). Completing the Master Simulation earns **Lieutenant Commander**. Each rank is earned, not given.
+You begin as a **Midshipman**. Completing Module 1 earns **Sub-Lieutenant**; passing the Gateway Simulation earns **Lieutenant** (held through Module 2). Completing the Master Simulation earns **Lieutenant Commander**. Beyond that, completing two or more Module 3 MOS specialisations earns **Commander**, and passing the Final Exercise (Operation: Enduring Shield) earns **Captain**. Each rank is earned, not given.
 
 ### 11. Can I skip ahead?
 
@@ -74,11 +74,13 @@ All simulations are timed, proctored by ARIA, and designed to test accumulated s
 
 **What to expect**: Three missions in 75 minutes. You inherit a compromised forward observation post — three nodes, SSH wide open, firewalls down, insecure services running. You will assess, harden, and encrypt. No hints file. No hand-holding. Everything from Module 1, applied under the clock.
 
-**Prerequisites**: Missions 1.1 through 1.5 completed. You must be comfortable with inventory, ad-hoc commands, playbooks, roles, handlers, templates, Vault, and multi-OS support.
+**Prerequisites**: Missions 1.1 through 1.6 completed. You must be comfortable with inventory, ad-hoc commands, playbooks, roles, handlers, templates, Vault, multi-OS support, and host discovery.
 
 **How to attempt**:
 ```bash
-git clone https://github.com/starfall-defence-corps/gateway-simulation.git
+# 1. Use this template on GitHub (green button, top right of the
+#    gateway-simulation repo) to create YOUR OWN copy, then clone it:
+git clone https://github.com/YOUR-USERNAME/gateway-simulation.git
 cd gateway-simulation
 make setup
 source venv/bin/activate
@@ -101,11 +103,13 @@ source venv/bin/activate
 
 **What to expect**: Four missions in 3.5 hours. You inherit Dread Admiral Snowflake's hand-built fleet — six nodes, no compliance baseline, no tests, no automation. You will assess all six against CIS benchmarks with Lynis, build a tagged hardening role with Molecule tests, construct a CI/CD pipeline with drift detection, and respond to a live incident. This is everything.
 
-**Prerequisites**: All of Module 1, all of Module 2 (Missions 2.1 through 2.4), and the Gateway Simulation. You must be comfortable with Molecule, Testinfra, CIS controls, rolling updates, ansible-lint, CI pipelines, and incident investigation.
+**Prerequisites**: All of Module 1, all of Module 2 (Missions 2.1 through 2.6), and the Gateway Simulation. You must be comfortable with Molecule, Testinfra, CIS controls, rolling updates, ansible-lint, CI pipelines, and incident investigation.
 
 **How to attempt**:
 ```bash
-git clone https://github.com/starfall-defence-corps/master-simulation.git
+# 1. Use this template on GitHub (green button, top right of the
+#    master-simulation repo) to create YOUR OWN copy, then clone it:
+git clone https://github.com/YOUR-USERNAME/master-simulation.git
 cd master-simulation
 make setup
 source venv/bin/activate

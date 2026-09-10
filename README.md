@@ -79,7 +79,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 
 ## Prerequisites
 
-**Zero-setup option**: every mission repo ships a devcontainer — after creating your copy, open it with **Code → Codespaces → Create codespace** and skip all the installs below. First boot takes ~5 minutes (one-time); the free tier covers ~30 hours/month on the lab machine.
+**Zero-setup option**: every mission repo except `mission-3-5` ships a devcontainer — after creating your copy, open it with **Code → Codespaces → Create codespace** and skip all the installs below. First boot takes ~5 minutes (one-time); the free tier covers ~30 hours/month on the lab machine.
 
 **Running locally instead:**
 
