@@ -432,7 +432,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 4. **Checklist**:
    - [ ] Read: Building Your SOPs
    - [ ] Practice: Crypto Cell (vault create, encrypt, decrypt)
-   - [ ] Practice: Found the Colonel's secret in git history
+   - [ ] Practice: Found the Warlord's plaintext secret at `/opt/fleet-db-creds.txt`
    - [ ] Mission: Clean House — role structure, vault, CI green
    - [ ] Can do: branch → PR workflow without instructions
 
@@ -496,7 +496,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 ### Mission 2: Hardening (30 min)
 - Ansible role: SSH, services, permissions, templates, conditionals
 - Handles both OS families
-- Molecule passes on all nodes
+- Hardening checks pass on all nodes (`make test`)
 
 ### Mission 3: Secure & Submit (25 min)
 - Vault-encrypt sensitive values
@@ -706,6 +706,55 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
+## 2.5 Noise Storm (Incident Response — Act 1)
+
+**Rank**: Lieutenant
+**Villain**: An unknown adversary — a fixed-address probe hammering the fleet's SSH and web ports around the clock
+**Builds on**: Every defence from Modules 1–2 (SSH hardening, firewalling, roles, templates) — applied during a live attack
+
+### What You'll Learn
+- Incident response as automation: hardening the fleet while it is under fire
+- Key-only SSH authentication across the fleet
+- Rate-limiting and bans with fail2ban
+- Log collection and triage reporting
+- IOC blocking with firewall rules — and holding the line when the attacker changes address
+
+### Content
+1. **Mission**: "Noise Storm"
+   - The fleet comes up **already under attack** from a noise generator
+   - Phase 1: Key-only auth
+   - Phase 2: Rate-limit & ban (fail2ban)
+   - Phase 3: See the storm — triage report generated from fleet logs
+   - Phase 4: Block the IOC
+   - Phase 5 (capstone): Hold the line — the attacker moves; your automation adapts
+   - Everything is defensive automation applied to **your** fleet; you never touch the attacker
+
+---
+
+## 2.6 Counterattack (Incident Response — Act 2)
+
+**Rank**: Lieutenant
+**Villain**: The intruder behind the noise storm — now inside the fleet
+**Builds on**: Continues the incident begun in 2.5; the 2.3 serial/health-gate rolling pattern is the backbone of the capstone
+
+### What You'll Learn
+- Persistence hunting: cron implants, rogue systemd units, planted SSH keys, backdoor accounts
+- Evidence-first incident response: read-only triage before eradication
+- Credential rotation at fleet scale
+- Rolling remediation that never takes the scored service dark
+
+### Content
+1. **Mission**: "Counterattack"
+   - Every node ships **already compromised**: hidden cron job, systemd beacon phoning home, extra key on root, backdoor account with passwordless sudo
+   - Phase 1: Triage the fleet — read-only evidence gathering + triage report
+   - Phase 2: Purge the implants
+   - Phase 3: Accounts, keys & credential rotation
+   - Phase 4: Block the C2
+   - Phase 5 (capstone): Clean & services up — rolling remediation with health gates
+   - Sets up the incident-response phase of the Master Simulation
+
+---
+
 ## Master Simulation: "Operation: Iron Curtain"
 
 > **Dread Admiral Snowflake. 6 servers, every one different. Hand-built. Undocumented. Your mission: uniform, tested, automated compliance.**
@@ -747,7 +796,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 # Module 3: MOS Specialization — Build Your Battle Rattle
 
-> Available from Lieutenant. Mission briefing only. 2+ MOS = Commander rank.
+> Available from Lieutenant Commander (after the Master Simulation). Mission briefing only. 2+ MOS = Commander rank.
 >
 > **Status: in development** — MOS-4 and MOS-5 (the battle-rattle runbook set) shipped and playable; MOS-1/2/3/6 need VM infra beyond the current lab and remain future work.
 
