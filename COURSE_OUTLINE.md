@@ -190,7 +190,10 @@ The Voidborn's agents — each a real-world anti-pattern:
 | **Nyx, the Signal Ghost** | Static maps for a fleet that never keeps the same address | 1.6 |
 | **Reaver YOLO-Deploy** | Pushes to prod untested. Friday. 16:59. | 2.1 |
 | **Corsair Unpatched** | "If it works, don't update it" (last patched: 2019) | 2.2 |
+| **The Storm** | Hammers every port from one address — then rotates it. Noise as a weapon | 2.5 |
+| **The Operator** | Already inside: implants, a backdoor account, stolen keys, C2 beacons | 2.6 |
 | **The Phantom Logstash** | Broke the Elastic Stack, left the fleet blind | MOS 4 |
+| **The Hydra** | Sever one IOC and it regrows under another. Punishes one-off fixes | MOS 5 |
 | **Dread Admiral Snowflake** | Every server hand-configured. "Documentation? It's in my head." | Master Sim |
 
 *Dread Admiral Snowflake is the final boss. The Admiral's motto: "But this server is special." No. It isn't.*
@@ -452,7 +455,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 - **Dynamic inventory** — an executable inventory / the `community.general.nmap` plugin that re-discovers the fleet at runtime and survives address rotation
 
 ### Briefing
-*"Mission 1.1 handed you the fleet roster. You will not always be so lucky. Nyx, the Signal Ghost, keeps our forward posts alive but nameless — she rotates their addressing faster than any static map can follow. You have one fact: the subnet, 172.30.0.0/24. Discover the fleet, fingerprint each node by the service it speaks, and build a map that holds even while Nyx moves it. This is the last thing you learn before the Gateway — because the Gateway hands you a boarded post and no roster at all."*
+*"Mission 1.1 handed you the fleet roster. You will not always be so lucky. Nyx, the Signal Ghost, keeps our forward posts alive but nameless — she rotates their addressing faster than any static map can follow. You have one fact: the subnet, 172.30.0.0/24. Discover the fleet, fingerprint each node by the service it speaks, and build a map that holds even while Nyx moves it. This is the last thing you learn before the Gateway — because you will not always be handed the map, and a defender who cannot rebuild it from nothing is one rotation away from blind."*
 
 ### Content
 1. **Guide**: "Mapping from Nothing"
