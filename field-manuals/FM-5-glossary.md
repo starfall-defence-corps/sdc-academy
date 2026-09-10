@@ -78,6 +78,8 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **host_vars** -- A directory containing YAML files that define variables for individual hosts. File names match inventory hostnames. Highest specificity in the directory-based variable hierarchy, overriding `group_vars`.
 
+**The Hydra** -- Lore villain. Sever one head -- one IOC, one compromised account -- and it regrows under a new one. Represents one-off incident-response fixes that die the moment the incident mutates; the case for reusable, parameterised runbooks. -- *First introduced: [MOS 5 -- Battle Rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle)*
+
 ## I
 
 **Idempotency** -- The property that running the same operation multiple times produces the same result as running it once. In Ansible, a well-written playbook should report `changed=0` on subsequent runs. This is the core design principle tested in every SDC mission.
@@ -110,7 +112,15 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 **Notify** -- A task-level directive that triggers a named handler when the task reports a change. Multiple notifications to the same handler result in a single handler execution. -- *First introduced: [Mission 1.2](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door)*
 
+**Nyx, the Signal Ghost** -- Lore villain. A phantom adversary who rotates the fleet's addressing faster than any static map can follow. Represents hardcoded inventories and static-IP assumptions in infrastructure that never keeps the same address. -- *First introduced: [Mission 1.6](https://github.com/starfall-defence-corps/mission-1-6-inventory-from-nothing)*
+
+## O
+
+**The Operator** -- Lore villain. The intruder already inside: persistence implants, a backdoor account, stolen keys, and command-and-control beacons planted across the fleet. Represents undetected compromise and the eradication half of incident response. -- *First introduced: [Mission 2.6](https://github.com/starfall-defence-corps/mission-2-6-counterattack)*
+
 ## P
+
+**The Phantom Logstash** -- Lore villain. A saboteur who blinds the fleet by breaking its telemetry pipeline, then relocates the SIEM to see whose monitoring goes dark. Represents missing log forwarding, absent audit trails, and address-pinned monitoring. -- *First introduced: [MOS 4 -- Eyes Everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere)*
 
 **Play / Playbook** -- A play is a mapping of hosts to tasks. A playbook is a YAML file containing one or more plays. Playbooks are the primary unit of Ansible automation -- repeatable, version-controlled, and auditable. -- *First introduced: [Mission 1.2](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door)*
 
@@ -128,11 +138,15 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 ## S
 
+**Saboteur Chmod-777** -- Lore villain. A Voidborn operative who strips access controls by setting file permissions to `777` on classified fleet data. Represents world-writable files and permission mismanagement. -- *First introduced: [Mission 1.1](https://github.com/starfall-defence-corps/mission-1-1-fleet-census)*
+
 **SDC (Starfall Defence Corps)** -- The interstellar military organisation responsible for defending human-colonised systems against the Voidborn. Students are cadets enrolled in the SDC Academy, training to become fleet automation engineers.
 
 **SSH Root Fairy** -- Lore villain. A mythical being who leaves root login enabled and password authentication wide open on every ship. Represents the most basic SSH misconfiguration: allowing direct root access over the network. -- *First introduced: [Mission 1.2](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door)*
 
 **STIG (Security Technical Implementation Guide)** -- A set of security hardening standards published by DISA (Defense Information Systems Agency). More prescriptive and US-DoD-specific than CIS Benchmarks. Referenced in SDC lore as the military-grade counterpart to CIS controls.
+
+**The Storm** -- Lore villain. An unidentified adversary relentlessly probing every node's SSH and web-facing ports from a single source address -- and capable of rotating that address mid-engagement. Represents brute-force noise, unmonitored exposure, and defences that assume the attacker's address never changes. -- *First introduced: [Mission 2.5](https://github.com/starfall-defence-corps/mission-2-5-noise-storm)*
 
 **sysctl** -- A Linux kernel interface for modifying runtime parameters (e.g., IP forwarding, SYN cookies, ICMP redirects). Managed in Ansible via `ansible.posix.sysctl`. Persistent changes require entries in `/etc/sysctl.d/`. -- *First introduced: [Mission 1.3](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep)*
 
