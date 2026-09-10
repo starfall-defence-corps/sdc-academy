@@ -1,5 +1,5 @@
 # FM-3: Molecule & Testing Reference
-> Starfall Defence Corps — Field Manual
+> Starfall Defence Corps — Field Manual · [🏠 Academy Hub](../README.md) · [📖 Course Outline](../COURSE_OUTLINE.md)
 
 ---
 
