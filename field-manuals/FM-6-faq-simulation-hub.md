@@ -78,8 +78,8 @@ All simulations are timed, proctored by ARIA, and designed to test accumulated s
 
 **How to attempt**:
 ```bash
-# 1. Use this template on GitHub (green button, top right of the
-#    gateway-simulation repo) to create YOUR OWN copy, then clone it:
+# 1. Use this template -> Create a new repository (green button, top right
+#    of the gateway-simulation repo) to create YOUR OWN copy, then clone it:
 git clone https://github.com/YOUR-USERNAME/gateway-simulation.git
 cd gateway-simulation
 make setup
@@ -107,8 +107,8 @@ source venv/bin/activate
 
 **How to attempt**:
 ```bash
-# 1. Use this template on GitHub (green button, top right of the
-#    master-simulation repo) to create YOUR OWN copy, then clone it:
+# 1. Use this template -> Create a new repository (green button, top right
+#    of the master-simulation repo) to create YOUR OWN copy, then clone it:
 git clone https://github.com/YOUR-USERNAME/master-simulation.git
 cd master-simulation
 make setup

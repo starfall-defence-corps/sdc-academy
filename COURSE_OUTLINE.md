@@ -1,6 +1,8 @@
 # Starfall Defence Corps Academy
 ## Blue Team Ansible Automation Training
 
+> Starfall Defence Corps — Course Outline · [🏠 Academy Hub](README.md)
+
 > *"If you have to SSH into a box, you've already lost."*
 
 ---
@@ -75,6 +77,8 @@ Every mission follows the same real-world Git workflow:
 8. When checks pass and ARIA approves → mission complete
 ```
 
+> **Codespaces first boot**: if you opened your copy in a Codespace (step 2), click the **"Building the codespace"** notification in the lower-right corner and accept the workspace-trust prompt when it appears — the build waits indefinitely if you don't.
+
 **Why "Use this template", not fork?**
 - A template copy has no link back to the original — a clean, independent start
 - Students can't interfere with each other's work
@@ -106,7 +110,7 @@ Student opens PR in their own repo
 
 ---
 
-## Rank Progression (Royal Navy)
+## Rank Progression
 
 Cadets hold a single continuous commission in the Starfall Defence Corps — an
 officer's career, Midshipman to Commodore. Officer ranks only: the SDC does not
@@ -119,9 +123,7 @@ mix officer and rating ranks.
 | **Lieutenant** | Gateway + Module 2 (2.1–2.6) | Passing the Gateway Simulation | Reduced: mission briefing + pass/fail |
 | **Lieutenant Commander** | Master Simulation | Passing Operation: Iron Curtain | Scenario description only — full autonomy |
 | **Commander** | Module 3 | Completing 2+ MOS specialisations | Mission briefing only — design your own approach |
-| **Captain (RN)** | Final Exercise | Passing Operation: Enduring Shield | Write your own requirements, then implement |
-
-*Commodore and above (flag rank): reserved for instructors, mentors, and course contributors.*
+| **Captain** | Final Exercise | Passing Operation: Enduring Shield | Write your own requirements, then implement |
 
 ### Scaffolding Principle
 
@@ -838,6 +840,12 @@ Academy, the **pass/fail authority is deterministic pytest**, never a subjective
 > tracks (MOS-4 Detection + MOS-5 IR Automation, both shipped) already satisfy
 > "2+ MOS." The infra-heavy tracks are stretch specializations, not prerequisites.
 
+## Roadmap
+
+**Shipped and playable**: MOS-4 (Detection & Monitoring) and MOS-5 (Incident Response Automation) — either one already satisfies the "2+ MOS" requirement for Commander.
+
+**In development**: MOS-1 (Windows Hardening), MOS-2 (Network & Firewall Automation), MOS-3 (Container & Kubernetes Security), and MOS-6 (Cloud Infrastructure Hardening) await the planned Terraform + Hetzner VM labs. The [Final Exercise](#final-exercise-operation-enduring-shield) ("Operation: Enduring Shield") is also in development — its repo is not yet published.
+
 ## MOS 1: Windows Hardening
 
 > **Terrain**: Windows containers / VM lab — ships on the planned Terraform + Hetzner labs.
@@ -1013,6 +1021,10 @@ runbooks survive.
 # Implementation
 
 Internal implementation notes and the build roadmap live in [docs/implementation-notes.md](docs/implementation-notes.md). Cadets, nothing for you there — carry on.
+
+---
+
+[🏠 Back to the Academy Hub](README.md)
 
 ---
 

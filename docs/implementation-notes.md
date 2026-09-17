@@ -66,6 +66,8 @@ All 17 mission repos carry this devcontainer. Validated on a real 4-core codespa
 
 Canonical config: [`mission-1-1-fleet-census/.devcontainer/devcontainer.json`](https://github.com/starfall-defence-corps/mission-1-1-fleet-census/blob/main/.devcontainer/devcontainer.json) (identical across the repos).
 
+**Trust-dialog gotcha (found in sdc-academy#111)**: first boot appears to hang at "Building the codespace" — it's actually waiting on a workspace-trust dialog that only surfaces after the student clicks the "Building the codespace" toast in the lower-right corner. Documented in the hub README and COURSE_OUTLINE student workflow so cadets know to click it.
+
 ## Build Sequence
 
 Phases 1–3 (Missions 0–2.6 + both simulations + ARIA action) are **built and validated** (see sdc-academy issues #28–#39). MOS-4 (`mission-3-4-eyes-everywhere`) and MOS-5 (`mission-3-5-battle-rattle`) are shipped and playable. Remaining:

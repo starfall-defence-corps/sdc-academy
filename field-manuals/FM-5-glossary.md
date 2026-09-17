@@ -30,7 +30,7 @@ Combined technical and lore glossary for the SDC Academy curriculum. Entries are
 
 ## C
 
-**Midshipman / Sub-Lieutenant / Lieutenant / Lieutenant Commander / Commander / Captain** -- SDC Academy rank progression (Royal Navy officer track; officer ranks only). Cadets commission as Midshipman at enrolment and promote on milestones: Sub-Lieutenant (Module 1), Lieutenant (after the Gateway Simulation, held through Module 2), Lieutenant Commander (after the Master Simulation), Commander (Module 3 specialisations), Captain (Final Exercise).
+**Midshipman / Sub-Lieutenant / Lieutenant / Lieutenant Commander / Commander / Captain** -- SDC Academy rank progression (officer ranks only). Cadets commission as Midshipman at enrolment and promote on milestones: Sub-Lieutenant (Module 1), Lieutenant (after the Gateway Simulation, held through Module 2), Lieutenant Commander (after the Master Simulation), Commander (Module 3 specialisations), Captain (Final Exercise).
 
 **Corsair Unpatched** -- Lore villain. A negligent commanding officer whose ships run outdated software with known CVEs. Represents the threat of unpatched systems and ignored compliance baselines. -- *First introduced: [Mission 2.2](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code)*
 
