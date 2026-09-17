@@ -1,5 +1,7 @@
 # Starfall Defence Corps Academy
 
+> 🏠 **You are here: Academy Hub** · [📖 Course Outline](COURSE_OUTLINE.md) · [📚 Field Manuals](field-manuals/)
+
 > *Training the next generation of cyber defence operators through gamified, hands-on Ansible training.*
 
 The Starfall Defence Corps Academy is a structured training programme that teaches Ansible automation through military-themed missions. Each mission presents a realistic scenario where you'll use Ansible to secure, configure, and manage fleet infrastructure.
@@ -9,6 +11,8 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 **📖 Want the full picture?** The [Course Outline](COURSE_OUTLINE.md) has the lore, rank progression, and detailed briefings for every mission.
 
 ## Missions
+
+*Every mission repo's README links back here via 🏠 Academy Hub — you can always find your way home.*
 
 ### Mission 0 — Enrolment
 
@@ -53,7 +57,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | 4 | Eyes Everywhere | Telemetry at scale — rsyslog forwarding, audit, an osquery-style agent, behavioural collector verification | [mission-3-4-eyes-everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) |
 | 5 | Battle Rattle | Incident-response automation — four reusable `runbooks/<verb>.yml` (block-ioc, collect-triage, rotate-creds, restore-service), graded for portability by dual-nonce re-execution | [mission-3-5-battle-rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle) |
 
-> The remaining Module 3 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md) for the roadmap.
+> The remaining Module 3 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md#roadmap) for the roadmap.
 
 ### Field Manuals — Reference Library
 
@@ -69,7 +73,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 ## How to Enrol
 
 1. Navigate to your assigned mission repo (see table above)
-2. Click **Use this template** > **Create a new repository** (this creates your own copy)
+2. Click **Use this template** → **Create a new repository** (this creates your own copy)
 3. Name your repo (e.g., `mission-0-reporting-for-duty`), set it to **Public**
 4. Clone your new repo locally and run `make doctor` — it checks your machine is mission-ready
 5. Follow the README inside: `make setup` boots the lab, `make test` asks ARIA to verify your work
@@ -79,7 +83,7 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 
 ## Prerequisites
 
-**Zero-setup option**: every mission repo ships a devcontainer — after creating your copy, open it with **Code → Codespaces → Create codespace** and skip all the installs below. First boot takes ~5 minutes (one-time); the free tier covers ~30 hours/month on the lab machine.
+**Zero-setup option**: every mission repo ships a devcontainer — after creating your copy, open it with **Code → Codespaces → Create codespace** and skip all the installs below. First boot takes ~5 minutes (one-time); the free tier covers ~30 hours/month on the lab machine. Partway through, click the **"Building the codespace"** notification in the lower-right corner and accept the workspace-trust prompt when it appears — the build waits indefinitely if you don't.
 
 **Running locally instead:**
 
