@@ -842,7 +842,7 @@ Academy, the **pass/fail authority is deterministic pytest**, never a subjective
 
 ## Roadmap
 
-**Shipped and playable**: MOS-4 (Detection & Monitoring) and MOS-5 (Incident Response Automation) — either one already satisfies the "2+ MOS" requirement for Commander.
+**Shipped and playable**: MOS-4 (Detection & Monitoring) and MOS-5 (Incident Response Automation) — completing **both** satisfies the "2+ MOS" requirement for Commander.
 
 **In development**: MOS-1 (Windows Hardening), MOS-2 (Network & Firewall Automation), MOS-3 (Container & Kubernetes Security), and MOS-6 (Cloud Infrastructure Hardening) await the planned Terraform + Hetzner VM labs. The [Final Exercise](#final-exercise-operation-enduring-shield) ("Operation: Enduring Shield") is also in development — its repo is not yet published.
 
