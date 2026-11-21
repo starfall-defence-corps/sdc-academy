@@ -1,63 +1,75 @@
 # Starfall Defence Corps Academy
 
-> 🏠 **You are here: Academy Hub** · [📖 Course Outline](COURSE_OUTLINE.md) · [📚 Field Manuals](field-manuals/)
+> 🏠 **You are here: Academy Hub** · [📖 Course Outline](COURSE_OUTLINE.md) · [📚 Field Manuals](field-manuals/) · [🤖 ARIA](https://github.com/starfall-defence-corps/aria)
 
 > *Training the next generation of cyber defence operators through gamified, hands-on Ansible training.*
 
-The Starfall Defence Corps Academy is a structured training programme that teaches Ansible automation through military-themed missions. Each mission presents a realistic scenario where you'll use Ansible to secure, configure, and manage fleet infrastructure.
+**A hands-on course in defensive Ansible automation: 15 missions and 2 timed capstones, each a GitHub template repo with its own Docker lab and an automated grader.**
+
+The Voidborn are probing the fleet. You defend it with code. Every mission drops you into a live lab — real containers, real SSH, real services — and asks you to harden, audit, test or recover it with Ansible. `make test` runs the mission's grader against the lab and tells you exactly which objectives pass. Open a pull request and **ARIA**, the Academy's AI analyst, adds a written review of your code.
+
+| | |
+|---|---|
+| **You learn** | Inventory and ad-hoc commands → playbooks, templates, roles and Vault → Molecule testing, CIS compliance, rolling deployments, CI/CD → incident response and reusable runbooks |
+| **You work in** | Your own copy of each mission repo (**Use this template**), locally with Docker or in a GitHub Codespace |
+| **You are graded by** | A deterministic pytest grader per mission (`make test`), plus an optional AI code review on your pull request |
+| **You need** | Basic Linux CLI and a GitHub account — see [Requirements](#requirements) |
 
 **🚀 New cadet? Start here:** [enrol](#how-to-enrol) in [Mission 0 — Reporting for Duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty) — a 15-minute environment shakeout that ends with your first green ARIA banner — then work through the missions in order.
 
 **📖 Want the full picture?** The [Course Outline](COURSE_OUTLINE.md) has the lore, rank progression, and detailed briefings for every mission.
 
-## Missions
+## Who This Is For
+
+- **Primary**: military cyber defence teams — Blue Team analysts, SOC operators, sysadmins in uniform — who have seen what happens when hardening is done by hand.
+- **Secondary**: anyone in IT security who wants to automate hardening, compliance and detection, and learn Ansible properly along the way.
+
+No prior Ansible experience is assumed: Mission 0 gives you every command, and each Module 1 mission ships step-by-step exercises and hints. Scaffolding is reduced as you rise through the ranks, and the capstones are timed assessments with a briefing rather than a walkthrough — see [Rank Progression](COURSE_OUTLINE.md#rank-progression).
+
+## Mission Map
 
 *Every mission repo's README links back here via 🏠 Academy Hub — you can always find your way home.*
 
-### Mission 0 — Enrolment
+### Mission 0 — Enrolment · rank on completion: Midshipman
 
-| Mission | Codename | Topic | Repo |
-|---------|----------|-------|------|
-| 0 | Reporting for Duty | Enrolment & environment check — first green banner in ~15 min | [mission-0-reporting-for-duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty) |
+| # | Mission | What you practise |
+|---|---------|-------------------|
+| 0 | [Reporting for Duty](https://github.com/starfall-defence-corps/mission-0-reporting-for-duty) | Enrolment and environment check — boot a one-node lab, first Ansible command, first green banner in ~15 min |
 
-### Module 1 — Foundation
+### Module 1 — Foundation · rank on completion: Sub-Lieutenant
 
-| Mission | Codename | Topic | Repo |
-|---------|----------|-------|------|
-| 1.1 | Fleet Census | Inventory, ad-hoc commands, fact gathering | [mission-1-1-fleet-census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census) |
-| 1.2 | Lock the Door | Playbook fundamentals, SSH hardening, handlers | [mission-1-2-lock-the-door](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) |
-| 1.3 | Clean Sweep | Service hardening, firewall, sysctl, file permissions | [mission-1-3-clean-sweep](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) |
-| 1.4 | Many Ships | Variables, Jinja2 templates, conditionals, multi-OS | [mission-1-4-many-ships](https://github.com/starfall-defence-corps/mission-1-4-many-ships) |
-| 1.5 | Clean House | Roles, Ansible Vault, secrets management | [mission-1-5-clean-house](https://github.com/starfall-defence-corps/mission-1-5-clean-house) |
-| 1.6 | Inventory from Nothing | Host discovery, service fingerprinting, dynamic inventory | [mission-1-6-inventory-from-nothing](https://github.com/starfall-defence-corps/mission-1-6-inventory-from-nothing) |
-| **Gateway** | **Operation: First Contact** | **Capstone assessment — all Module 1 skills, 75 min** | [gateway-simulation](https://github.com/starfall-defence-corps/gateway-simulation) |
+| # | Mission | What you practise |
+|---|---------|-------------------|
+| 1.1 | [Fleet Census](https://github.com/starfall-defence-corps/mission-1-1-fleet-census) | Inventory, ad-hoc commands, fact gathering |
+| 1.2 | [Lock the Door](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) | Playbook fundamentals, SSH hardening, handlers |
+| 1.3 | [Clean Sweep](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) | Service hardening, firewall, sysctl, file permissions |
+| 1.4 | [Many Ships](https://github.com/starfall-defence-corps/mission-1-4-many-ships) | Variables, Jinja2 templates, conditionals, multi-OS (Ubuntu + Rocky Linux) |
+| 1.5 | [Clean House](https://github.com/starfall-defence-corps/mission-1-5-clean-house) | Roles, Ansible Vault, secrets management, Git workflow |
+| 1.6 | [Inventory from Nothing](https://github.com/starfall-defence-corps/mission-1-6-inventory-from-nothing) | Host discovery, service fingerprinting, dynamic inventory |
+| 🎯 | [**Gateway Simulation** — Operation: First Contact](https://github.com/starfall-defence-corps/gateway-simulation) | **Capstone:** all Module 1 skills against a compromised outpost, 75 minutes, no step-by-step guide. Pass to earn **Lieutenant** |
 
 ### Module 2 — Advanced Individual Training
 
-| Mission | Codename | Topic | Repo |
-|---------|----------|-------|------|
-| 2.1 | Weapon Handling Test | Molecule, Testinfra, test-driven infrastructure | [mission-2-1-weapon-handling-test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) |
-| 2.2 | Compliance as Code | CIS benchmarks, Lynis scanning, tagged controls | [mission-2-2-compliance-as-code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) |
-| 2.3 | Fleet Sync | Rolling updates, delegation, error handling, orchestration | [mission-2-3-fleet-sync](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) |
-| 2.4 | Defence in Depth | CI/CD pipelines, ansible-lint, drift detection | [mission-2-4-defence-in-depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) |
-| 2.5 | Noise Storm | Incident response — SSH hardening, fail2ban, log forwarding, IOC blocking | [mission-2-5-noise-storm](https://github.com/starfall-defence-corps/mission-2-5-noise-storm) |
-| 2.6 | Counterattack | Incident response — persistence hunt & eradication, credential rotation, rolling remediation | [mission-2-6-counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) |
-| **Master** | **Operation: Iron Curtain** | **Capstone assessment — all Module 2 skills, 3.5 hr** | [master-simulation](https://github.com/starfall-defence-corps/master-simulation) |
+| # | Mission | What you practise |
+|---|---------|-------------------|
+| 2.1 | [Weapon Handling Test](https://github.com/starfall-defence-corps/mission-2-1-weapon-handling-test) | Molecule, Testinfra, test-driven infrastructure |
+| 2.2 | [Compliance as Code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) | CIS benchmarks, Lynis scanning, tagged controls, triage against the clock |
+| 2.3 | [Fleet Sync](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) | Rolling updates, delegation, health checks, `block`/`rescue` error handling |
+| 2.4 | [Defence in Depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) | CI/CD pipelines, ansible-lint, drift detection |
+| 2.5 | [Noise Storm](https://github.com/starfall-defence-corps/mission-2-5-noise-storm) | Incident response, act 1 — key-only SSH, fail2ban, log forwarding, IOC blocking under live attack |
+| 2.6 | [Counterattack](https://github.com/starfall-defence-corps/mission-2-6-counterattack) | Incident response, act 2 — persistence hunt and eradication, credential rotation, rolling remediation |
+| 🎯 | [**Master Simulation** — Operation: Iron Curtain](https://github.com/starfall-defence-corps/master-simulation) | **Capstone:** assessment, remediation, testing, automation and a surprise incident across 6 mixed-OS nodes, 3.5 hours. Pass to earn **Lieutenant Commander** |
 
-**Module 3 — MOS Specialisations · Build Your Battle Rattle** (Lieutenant Commander · mostly in development):
+### Module 3 — MOS Specialisations · Build Your Battle Rattle
 
-> Module 3 makes your Module-2 maneuvers **reusable across unfamiliar terrain**. Each
-> specialization produces a parameterised `runbooks/<verb>.yml` playbook for your personal
-> **battle rattle** — the portfolio you carry into the Final Exercise — graded for
-> *portability* by re-running it under a fresh scenario (hardcoded fails, parameterised
-> survives). See the [Course Outline](COURSE_OUTLINE.md#module-3-mos-specialization--build-your-battle-rattle).
+Module 3 makes your Module 2 manoeuvres **reusable across unfamiliar terrain**. Each specialisation produces a parameterised playbook for your personal **battle rattle** — the runbook portfolio you carry into the Final Exercise — graded for *portability*: the grader runs your same playbook against fresh scenarios, so hardcoded answers fail. Completing two or more MOS earns **Commander**. See the [Course Outline](COURSE_OUTLINE.md#module-3-mos-specialization--build-your-battle-rattle).
 
-| MOS | Mission | Skills | Repo |
-|-----|---------|--------|------|
-| 4 | Eyes Everywhere | Telemetry at scale — rsyslog forwarding, audit, an osquery-style agent, behavioural collector verification | [mission-3-4-eyes-everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) |
-| 5 | Battle Rattle | Incident-response automation — four reusable `runbooks/<verb>.yml` (block-ioc, collect-triage, rotate-creds, restore-service), graded for portability by dual-nonce re-execution | [mission-3-5-battle-rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle) |
+| MOS | Mission | What you practise |
+|-----|---------|-------------------|
+| 4 | [Eyes Everywhere](https://github.com/starfall-defence-corps/mission-3-4-eyes-everywhere) | Telemetry at scale — rsyslog forwarding, audit rules, an osquery-style agent; graded on whether events actually arrive at the collector |
+| 5 | [Battle Rattle](https://github.com/starfall-defence-corps/mission-3-5-battle-rattle) | Incident-response automation — four reusable `runbooks/<verb>.yml` (block-ioc, collect-triage, rotate-creds, restore-service), each re-run against two randomised scenarios |
 
-> The remaining Module 3 MOS specialisations and the Final Exercise are **in development** — see the [Course Outline](COURSE_OUTLINE.md#roadmap) for the roadmap.
+> **In development:** MOS 1, 2, 3 and 6 (Windows, network, Kubernetes and cloud hardening) need VM labs beyond the Docker setup, and the Final Exercise (Operation: Enduring Shield, rank of Captain) is not yet published — see the [roadmap](COURSE_OUTLINE.md#roadmap).
 
 ### Field Manuals — Reference Library
 
@@ -70,28 +82,56 @@ The Starfall Defence Corps Academy is a structured training programme that teach
 | [FM-5](field-manuals/FM-5-glossary.md) | Glossary — technical + lore terms |
 | [FM-6](field-manuals/FM-6-faq-simulation-hub.md) | FAQ & Simulation Hub |
 
+## How a Mission Works
+
+Every mission repo runs the same loop. The grader is local and deterministic; the pull request adds a written review on top.
+
+```mermaid
+flowchart TD
+    A["Use this template<br/>your own copy of the mission repo"] --> B["Clone it, or open a Codespace"]
+    B --> C["make doctor<br/>checks Docker, ports, tools"]
+    C --> D["make setup<br/>boots the Docker lab and Python venv"]
+    D --> E["Read docs/BRIEFING.md<br/>write Ansible in workspace/"]
+    E --> F["make test<br/>pytest grader runs your Ansible against the lab"]
+    F -- "objectives failing" --> E
+    F -- "all phases green" --> G["make submit<br/>branch, commit workspace/, push, open PR to main"]
+    G --> H["aria-review.yml workflow<br/>runs on the pull request"]
+    H --> I{"ANTHROPIC_API_KEY<br/>secret set?"}
+    I -- "yes" --> J["ARIA reads your workspace files<br/>and writes an in-character code review"]
+    I -- "no" --> K["Review skipped<br/>comment explains how to enable it"]
+    J --> L["Review posted as a PR comment"]
+    K --> L
+```
+
+- **`make test` is the source of truth.** Each mission's grader lives in `molecule/default/tests/` and drives Ansible against the running lab containers, then reports phase by phase. It needs no API key.
+- **The pull request review is qualitative.** Deterministic tests need the Docker lab, so they are not re-run in CI. ARIA reviews the files you submitted — structure, security, recommendations — and posts a rating as a PR comment. Push again and the same comment is updated.
+- **The PR is your record.** It is never merged into the Academy's repo; your copy, with its PR history and ARIA's feedback, is your portfolio.
+
 ## How to Enrol
 
-1. Navigate to your assigned mission repo (see table above)
+1. Navigate to your assigned mission repo (see the [Mission Map](#mission-map))
 2. Click **Use this template** → **Create a new repository** (this creates your own copy)
 3. Name your repo (e.g., `mission-0-reporting-for-duty`), set it to **Public**
 4. Clone your new repo locally and run `make doctor` — it checks your machine is mission-ready
 5. Follow the README inside: `make setup` boots the lab, `make test` asks ARIA to verify your work
-6. Done? `make submit` branches, commits, pushes, and opens your review PR in one command
+6. Done? `make submit` branches, commits, pushes, and opens your review PR in one command (needs the [GitHub CLI](https://cli.github.com/), signed in with `gh auth login`)
 
 > **Important**: Use **"Use this template"**, not "Fork". Templates give you a clean copy with no link back to the original.
 
-## Prerequisites
+## Requirements
+
+**Skills**: basic Linux CLI (you can `ls`, `cd`, `grep` and `ssh` without looking them up) and a GitHub account.
 
 **Zero-setup option**: every mission repo ships a devcontainer — after creating your copy, open it with **Code → Codespaces → Create codespace** and skip all the installs below. First boot takes ~5 minutes (one-time); the free tier covers ~30 hours/month on the lab machine. Partway through, click the **"Building the codespace"** notification in the lower-right corner and accept the workspace-trust prompt when it appears — the build waits indefinitely if you don't.
 
 **Running locally instead:**
 
-- **Docker Desktop** (running)
+- **Docker Desktop** (running, with Docker Compose v2)
 - **GNU Make**
 - **Ansible** (`ansible-core`)
 - **Python 3.10+** (with `python3-venv` on Debian/Ubuntu)
 - **Git**
+- **GitHub CLI** (`gh`) — only for `make submit`; you can also push and open the PR by hand
 
 > **Windows users**: Install [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) and run all commands from your WSL terminal. Docker Desktop should use the WSL2 backend.
 
@@ -110,6 +150,20 @@ To enable PR reviews, add an API key to your repo:
 
 If no key is configured, ARIA skips the PR review — local testing still works.
 
+ARIA is a shared GitHub Action that every mission's workflow calls. Its inputs, what it reads, and its security posture are documented in the [aria repository](https://github.com/starfall-defence-corps/aria).
+
+## Repositories
+
+| Repo | Purpose |
+|------|---------|
+| [`sdc-academy`](https://github.com/starfall-defence-corps/sdc-academy) | This hub — enrolment, [Course Outline](COURSE_OUTLINE.md), [Field Manuals](field-manuals/) |
+| [`aria`](https://github.com/starfall-defence-corps/aria) | ARIA — the shared review GitHub Action and the `aria-reporter` pytest plugin used by every grader |
+| `mission-*`, `gateway-simulation`, `master-simulation` | The 17 mission template repos listed in the [Mission Map](#mission-map) |
+
 ## About
 
 Built by the Starfall Defence Corps for cadets who learn by doing, not by reading.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
