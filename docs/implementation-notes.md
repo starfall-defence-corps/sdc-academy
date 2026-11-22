@@ -31,7 +31,7 @@ Each mission repo: `.github/workflows/` (ARIA CI), `docs/` (BRIEFING/EXERCISES/H
 
 ## ARIA
 
-**Current**: shared GitHub Action (`starfall-defence-corps/aria@main`) referenced by every mission CI workflow. PR review needs an `ANTHROPIC_API_KEY` secret in the student's repo; without it the review step skips gracefully. Local `make test` (pytest + in-character reporter) needs no key.
+**Current**: shared GitHub Action (`starfall-defence-corps/aria@v1.0.0`, pinned release tag) referenced by every mission CI workflow; it posts a qualitative review only and does not grade. PR review needs an `ANTHROPIC_API_KEY` secret in the student's repo; without it the review step skips gracefully. Local `make test` (pytest + in-character reporter) needs no key.
 
 **Planned — GitHub App**:
 

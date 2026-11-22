@@ -49,7 +49,7 @@ You define WHAT. Ansible determines HOW. If it's already done, it does nothing. 
 | Tool | Role in Academy | Why |
 |------|----------------|-----|
 | GitHub | Mission repos, PRs, code review, progression tracking | Real-world workflow from day 1 |
-| GitHub Actions | CI pipeline — runs on every PR | Automated testing before students fully understand it |
+| GitHub Actions | Runs ARIA's review on every PR (grading stays local in `make test`) | Real PR workflow before students build their own pipelines |
 | GitHub Codespaces | Zero-setup lab environment | One-click start, any device — free tier covers ~30 hrs/month on the lab machine |
 | Docker | Target containers for Molecule testing | Consistent across all platforms including Apple Silicon |
 | Molecule + Testinfra | Role testing — Weapon Handling Test | You don't deploy what you haven't tested |
@@ -72,9 +72,9 @@ Every mission follows the same real-world Git workflow:
 3. Student boots the lab (make setup) and creates a BRANCH for their work
 4. Student writes code, commits, verifies locally with make test, pushes
 5. Student opens a PR within their own repo (branch → main)
-6. CI runs automatically (GitHub Actions: mission checks + ARIA review)
+6. CI runs automatically (GitHub Actions: ARIA's qualitative review — no grading)
 7. Student addresses feedback, pushes fixes
-8. When checks pass and ARIA approves → mission complete
+8. When `make test` is all green → mission complete (ARIA's review is feedback, not a gate)
 ```
 
 > **Codespaces first boot**: if you opened your copy in a Codespace (step 2), click the **"Building the codespace"** notification in the lower-right corner and accept the workspace-trust prompt when it appears — the build waits indefinitely if you don't.
@@ -86,23 +86,24 @@ Every mission follows the same real-world Git workflow:
 - Each student has their own full copy to experiment with
 - PRs stay within the student's own repo, so review history is theirs
 
-**The PR is the submission.** It's never merged to the org's mission repo. The student's copy is their portfolio — every mission PR with CI results and ARIA feedback preserved.
+**The PR is the submission.** It's never merged to the org's mission repo. The student's copy is their portfolio — every mission PR with its ARIA review preserved.
 
 ### ARIA Architecture
 
-ARIA currently runs as a **GitHub Action** (`starfall-defence-corps/aria@main`) referenced by every mission repo's CI workflow:
+ARIA currently runs as a **GitHub Action** (`starfall-defence-corps/aria@v1.0.0`, a pinned release tag) referenced by every mission repo's CI workflow:
 
 ```
 Student opens PR in their own repo
   → GitHub Actions workflow runs
   → ARIA action:
-      1. Runs the mission's automated checks
-      2. Reads the student's submitted files
-      3. Sends them to the LLM with the mission context (Starfall lore + Ansible expertise)
-      4. Posts an in-character review comment on the PR
+      1. Reads the student's submitted files (the mission's tests are NOT run in CI)
+      2. Sends them to the LLM with the mission context (Starfall lore + Ansible expertise)
+      3. Posts an in-character qualitative review comment on the PR
 ```
 
-**API key handling (current)**: The qualitative PR review uses an Anthropic API key stored as a secret (`ANTHROPIC_API_KEY`) in the student's own repo — see [How to Enrol](README.md#how-to-enrol). If no key is configured, ARIA skips the PR review and CI still passes. Local `make test` never needs a key.
+CI does not grade the mission: the deterministic checks need the Docker lab, so `make test` run locally is the grader. The PR comment headline says whether the review was posted, skipped (no API key) or failed (API error), and never marks the mission complete.
+
+**API key handling (current)**: The qualitative PR review uses an Anthropic API key stored as a secret (`ANTHROPIC_API_KEY`) in the student's own repo — see [How to Enrol](README.md#how-to-enrol). If no key is configured, ARIA skips the PR review and the comment says so; the check does not fail. If the API call errors, the comment says the review failed and the check fails. Local `make test` never needs a key.
 
 **Planned upgrade**: a centrally hosted ARIA **GitHub App** — the key lives in the backend, students never handle it, one deployment serves all students. Cost control: rate limiting per student, review only on PR open/update events, lightweight model for lint-level feedback, full model for substantive review.
 
@@ -259,14 +260,14 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 3. **Mission**: "Fleet Census"
    - Use template → clone → branch → inventory → ad-hoc verify → PR
-   - CI validates inventory + connectivity + permissions
+   - `make test` validates inventory + connectivity + permissions
    - ARIA reviews
 
 4. **Checklist**:
    - [ ] Read: Reporting for Duty
    - [ ] Practice: Asset Registry (all 3 nodes connected)
    - [ ] Practice: `ansible -m setup` — identify OS family per node
-   - [ ] Mission: Fleet Census PR — CI passing
+   - [ ] Mission: Fleet Census PR — `make test` passing
    - [ ] ARIA feedback addressed
 
 ---
@@ -306,7 +307,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 4. **Checklist**:
    - [ ] Read: Writing Your First OPORD
    - [ ] Practice: YAML Minefield (all 10)
-   - [ ] Mission: Lock the Door — CI passing
+   - [ ] Mission: Lock the Door — `make test` passing
    - [ ] Understand: `changed` vs `ok`
    - [ ] Can explain: why handlers exist
 
@@ -348,7 +349,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 4. **Checklist**:
    - [ ] Read: Managing Your Fleet's Services
    - [ ] Practice: Service Parade (all 3 fixed)
-   - [ ] Mission: Clean Sweep — CI passing
+   - [ ] Mission: Clean Sweep — `make test` passing
    - [ ] Can do: install + enable + start in one playbook
    - [ ] Understand: `started` is idempotent, `restarted` is not
 
@@ -440,7 +441,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
    - [ ] Read: Building Your SOPs
    - [ ] Practice: Crypto Cell (vault create, encrypt, decrypt)
    - [ ] Practice: Found the Warlord's plaintext secret at `/opt/fleet-db-creds.txt`
-   - [ ] Mission: Clean House — role structure, vault, CI green
+   - [ ] Mission: Clean House — role structure, vault, `make test` green
    - [ ] Can do: branch → PR workflow without instructions
 
 ---
@@ -482,7 +483,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
    - [ ] Read: Mapping from Nothing
    - [ ] Practice: Signal Ghost (discover, fingerprint, exclude the decoy)
    - [ ] Practice: survived `make rotate` with a dynamic inventory
-   - [ ] Mission: Inventory from Nothing — discovery, grouping, facts report, dynamic inventory, CI green
+   - [ ] Mission: Inventory from Nothing — discovery, grouping, facts report, dynamic inventory, `make test` green
    - [ ] Can do: walk into an unknown subnet and produce a correct grouped inventory
 
 ---
@@ -492,7 +493,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 > **The Voidborn have compromised a forward observation post. Three nodes exposed. 75 minutes. Everything you've learned.**
 
 **Prerequisites**: All Module 1 PRs complete
-**Format**: Use template → branch → PR → CI must pass
+**Format**: Use template → branch → PR → `make test` must pass
 
 ### Mission 1: Reconnaissance (20 min)
 - 3 containers with misconfigurations
@@ -508,7 +509,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 ### Mission 3: Secure & Submit (25 min)
 - Vault-encrypt sensitive values
 - No plaintext secrets (including git history)
-- PR with description, CI passes, ARIA approves
+- PR with description, `make test` passes, ARIA review addressed
 
 ### Performance Tiers
 | Time | Rating |
