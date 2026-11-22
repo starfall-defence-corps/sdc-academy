@@ -141,12 +141,12 @@ At Midshipman, you fill in blanks. By Captain, you're writing the requirements y
 | 1.1 Fleet Census | Inventory, ad-hoc, basic facts | — (first mission) |
 | 1.2 Lock the Door | Playbooks, modules, tasks, handlers | 1.1 inventory |
 | 1.3 Clean Sweep | Services, packages, file management | 1.1 inventory, 1.2 playbook structure |
-| 1.4 One Playbook Many Ships | Variables, facts, templates, conditionals | 1.1–1.3 everything (new OS families) |
+| 1.4 Many Ships | Variables, facts, templates, conditionals | 1.1–1.3 everything (new OS families) |
 | 1.5 Clean House | Roles, Vault, Git workflow | Restructures ALL 1.2–1.4 into roles |
 | 1.6 Inventory from Nothing | Host discovery, service fingerprinting, dynamic inventory | 1.1 inventory — but nothing is provided; discover it |
 | Gateway | All Module 1 combined | Everything 1.1–1.6 under pressure |
-| 2.1 WHT | Molecule testing | Tests the roles from 1.5 |
-| 2.2 Baseline | CIS benchmarks, compliance — timed H-45 baseline sprint + triage | Extends roles from 1.5 with new controls |
+| 2.1 Weapon Handling Test | Molecule testing | Tests the roles from 1.5 |
+| 2.2 Compliance as Code | CIS benchmarks, compliance — timed H-45 baseline sprint + triage | Extends roles from 1.5 with new controls |
 | 2.3 Fleet Sync | Multi-host orchestration | Deploys roles from 1.5/2.2 across fleet |
 | 2.4 Defence in Depth | CI/CD automation | Automates testing from 2.1 + deployment |
 | 2.5 Noise Storm | Incident response (IR arc, act 1) | Applies Module 1–2 defences (SSH, firewall, roles, templates) under live attack |
@@ -272,7 +272,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## [1.2 Your First Operations Order](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) (Playbook Fundamentals)
+## [1.2 Lock the Door](https://github.com/starfall-defence-corps/mission-1-2-lock-the-door) (Playbook Fundamentals)
 
 **Rank**: Sub-Lieutenant
 **Villain**: The SSH Root Fairy
@@ -313,7 +313,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## [1.3 Managing the Fleet](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) (Services, Packages & Config Files)
+## [1.3 Clean Sweep](https://github.com/starfall-defence-corps/mission-1-3-clean-sweep) (Services, Packages & Config Files)
 
 **Rank**: Sub-Lieutenant
 **Builds on**: 1.1 inventory + 1.2 playbook structure
@@ -355,7 +355,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 
 ---
 
-## [1.4 Adapting to Conditions](https://github.com/starfall-defence-corps/mission-1-4-many-ships) (Variables, Facts, Templates & Conditionals)
+## [1.4 Many Ships](https://github.com/starfall-defence-corps/mission-1-4-many-ships) (Variables, Facts, Templates & Conditionals)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Marauder Copy-Paste
@@ -385,7 +385,7 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
    - Template firewall (ufw vs firewalld)
    - Precedence debugging exercises
 
-3. **Mission**: "Operation: One Playbook, Many Ships"
+3. **Mission**: "Operation: Many Ships"
    - **Reuses 1.1 inventory** (with OS group_vars)
    - **Extends 1.2 + 1.3 tasks** (now templated)
    - Both OS families, Molecule on both
@@ -394,13 +394,13 @@ Not a training mission — an arrival. New cadets enrol via **Use this template*
 4. **Checklist**:
    - [ ] Read: Adapting to the Fleet
    - [ ] Practice: Template Forge
-   - [ ] Mission: One Playbook Many Ships — passes both OS
+   - [ ] Mission: Many Ships — passes both OS
    - [ ] Can write: `when` with `ansible_os_family`
    - [ ] Can explain: 5 precedence levels that matter
 
 ---
 
-## [1.5 Standard Operating Procedures](https://github.com/starfall-defence-corps/mission-1-5-clean-house) (Roles, Vault & Git Workflow)
+## [1.5 Clean House](https://github.com/starfall-defence-corps/mission-1-5-clean-house) (Roles, Vault & Git Workflow)
 
 **Rank**: Sub-Lieutenant
 **Villain**: Warlord Hardcoded-Password
@@ -638,7 +638,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## [2.3 Fleet-Wide Operations](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) (Multi-Host & Orchestration)
+## [2.3 Fleet Sync](https://github.com/starfall-defence-corps/mission-2-3-fleet-sync) (Multi-Host & Orchestration)
 
 **Rank**: Lieutenant (mission briefing + pass/fail only)
 **Builds on**: CIS-hardened, tested role → deployed across real fleet
@@ -669,7 +669,7 @@ Both: **documented, measurable, repeatable security configuration that can be au
 
 ---
 
-## [2.4 The Automated Defence Line](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) (CI/CD Pipelines)
+## [2.4 Defence in Depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) (CI/CD Pipelines)
 
 **Rank**: Lieutenant
 **Villain**: Reaver YOLO-Deploy (final confrontation)

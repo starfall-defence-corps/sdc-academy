@@ -84,27 +84,57 @@ Module 3 makes your Module 2 manoeuvres **reusable across unfamiliar terrain**. 
 
 ## How a Mission Works
 
-Every mission repo runs the same loop. The grader is local and deterministic; the pull request adds a written review on top.
+Every mission repo runs the same loop: you work and grade locally against a Docker lab, then a pull request in your own copy triggers ARIA's written review. The grader is local and deterministic; the review is qualitative and sits on top.
 
 ```mermaid
 flowchart TD
-    A["Use this template<br/>your own copy of the mission repo"] --> B["Clone it, or open a Codespace"]
-    B --> C["make doctor<br/>checks Docker, ports, tools"]
-    C --> D["make setup<br/>boots the Docker lab and Python venv"]
-    D --> E["Read docs/BRIEFING.md<br/>write Ansible in workspace/"]
-    E --> F["make test<br/>pytest grader runs your Ansible against the lab"]
-    F -- "objectives failing" --> E
-    F -- "all phases green" --> G["make submit<br/>branch, commit workspace/, push, open PR to main"]
-    G --> H["aria-review.yml workflow<br/>runs on the pull request"]
-    H --> I{"ANTHROPIC_API_KEY<br/>secret set?"}
-    I -- "yes" --> J["ARIA reads your workspace files<br/>and writes an in-character code review"]
-    I -- "no" --> K["Review skipped<br/>comment explains how to enable it"]
-    J --> L["Review posted as a PR comment"]
-    K --> L
+    TPL["Mission template repo<br/>starfall-defence-corps/mission-*"]
+    COPY["Your own copy of the repo<br/>on GitHub"]
+    API["Anthropic API"]
+
+    subgraph LOCAL["Your machine or Codespace"]
+        DOC["make doctor<br/>checks Docker, ports, tools"]
+        SETUP["make setup<br/>builds the Python venv, SSH key<br/>and Docker lab containers"]
+        WORK["Read docs/BRIEFING.md<br/>write Ansible in workspace/"]
+        TEST["make test<br/>pytest grader in molecule/default/tests/<br/>checks your files and the live lab"]
+        LAB[("Docker lab<br/>target containers")]
+        SUBMIT["make submit<br/>branch, commit workspace/,<br/>push, open PR to main"]
+    end
+
+    subgraph GH["GitHub: your copy of the repo"]
+        PR["Pull request to main<br/>opened or updated"]
+        WF["ARIA Review workflow<br/>.github/workflows/aria-review.yml"]
+        ACT["ARIA action, aria@v1.0.0<br/>skip-tests: graders are not re-run"]
+        KEY{"ANTHROPIC_API_KEY<br/>secret set?"}
+        SKIP["Review skipped<br/>check passes"]
+        READ["Reads your submitted workspace files<br/>plus ARIA's prompt and mission context"]
+        POSTED["Review produced"]
+        FAILED["Review failed<br/>check fails"]
+        COMMENT["ARIA comment on the PR<br/>created once, updated on every push"]
+    end
+
+    TPL -- "Use this template" --> COPY
+    COPY -- "clone, or open a Codespace" --> DOC
+    DOC --> SETUP --> WORK --> TEST
+    TEST -. "Ansible over SSH" .-> LAB
+    TEST -- "deficiencies" --> WORK
+    TEST -- "all phases green" --> SUBMIT
+    SUBMIT --> PR --> WF --> ACT --> KEY
+    KEY -- "no" --> SKIP
+    KEY -- "yes" --> READ
+    READ --> API
+    API -- "review text" --> POSTED
+    API -- "API error" --> FAILED
+    POSTED --> COMMENT
+    SKIP --> COMMENT
+    FAILED --> COMMENT
+    COMMENT -. "address feedback, push again" .-> WORK
 ```
 
-- **`make test` is the source of truth.** Each mission's grader lives in `molecule/default/tests/` and drives Ansible against the running lab containers, then reports phase by phase. It needs no API key.
-- **The pull request review is qualitative.** Deterministic tests need the Docker lab, so they are not re-run in CI. ARIA reviews the files you submitted — structure, security, recommendations — and posts a rating as a PR comment. Push again and the same comment is updated.
+In short: you create your own copy of a mission repo from its template, boot its Docker lab with `make setup`, and iterate on `workspace/` until `make test` — the mission's pytest grader — shows every phase green. `make submit` then pushes a branch and opens a pull request to `main` in your copy. Every time that pull request is opened or updated, the mission's `aria-review.yml` workflow runs the shared ARIA action with `skip-tests`, so the graders are **not** re-run in CI. If your repo has an `ANTHROPIC_API_KEY` secret, ARIA sends your submitted files to the Anthropic API with its reviewer prompt and the mission's context, and the workflow posts the result as a single PR comment that it updates on each push. Without a key the comment says the review was skipped; if the API call fails the comment says so and the check fails.
+
+- **`make test` is the source of truth.** Each mission's grader lives in `molecule/default/tests/`, checks your workspace files and, where the mission needs it, drives Ansible against the running lab containers, then reports phase by phase. It needs no API key.
+- **The pull request review is qualitative.** ARIA reviews the files you submitted — structure, security, recommendations — and the comment headline never marks a mission complete.
 - **The PR is your record.** It is never merged into the Academy's repo; your copy, with its PR history and ARIA's feedback, is your portfolio.
 
 ## How to Enrol
