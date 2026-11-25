@@ -66,7 +66,11 @@ You define WHAT. Ansible determines HOW. If it's already done, it does nothing. 
 
 Every mission follows the same real-world Git workflow:
 
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/how-a-mission-works-dark.svg">
+  <img src="assets/how-a-mission-works-light.svg" alt="How a mission works. On your machine or in a Codespace: make doctor, make setup, write Ansible, then make test grades your files and the live Docker lab; fix and re-test until all phases are green, then make submit opens a pull request in your own copy. On GitHub the ARIA Review workflow runs aria@v1.0.0 without re-running graders. If the ANTHROPIC_API_KEY secret is set, ARIA sends your files and the mission context to the Anthropic API and posts one PR comment, updated on each push; with no key the review is skipped and the check passes; on an API error the check fails. You address the feedback and push again." width="100%">
+</picture>
+
 1. Student clicks USE THIS TEMPLATE on the mission repo → their own clean copy
 2. Student CLONES their copy locally — or opens it in a GitHub Codespace (zero setup)
 3. Student boots the lab (make setup) and creates a BRANCH for their work
@@ -75,7 +79,6 @@ Every mission follows the same real-world Git workflow:
 6. CI runs automatically (GitHub Actions: ARIA's qualitative review — no grading)
 7. Student addresses feedback, pushes fixes
 8. When `make test` is all green → mission complete (ARIA's review is feedback, not a gate)
-```
 
 > **Codespaces first boot**: if you opened your copy in a Codespace (step 2), click the **"Building the codespace"** notification in the lower-right corner and accept the workspace-trust prompt when it appears — the build waits indefinitely if you don't.
 
@@ -92,14 +95,11 @@ Every mission follows the same real-world Git workflow:
 
 ARIA currently runs as a **GitHub Action** (`starfall-defence-corps/aria@v1.0.0`, a pinned release tag) referenced by every mission repo's CI workflow:
 
-```
-Student opens PR in their own repo
-  → GitHub Actions workflow runs
-  → ARIA action:
-      1. Reads the student's submitted files (the mission's tests are NOT run in CI)
-      2. Sends them to the LLM with the mission context (Starfall lore + Ansible expertise)
-      3. Posts an in-character qualitative review comment on the PR
-```
+When a student opens or updates a PR in their own repo, the GitHub Actions workflow runs the ARIA action, which:
+
+1. Reads the student's submitted files (the mission's tests are **not** run in CI)
+2. Sends them to the LLM with the mission context (Starfall lore + Ansible expertise)
+3. Posts an in-character qualitative review comment on the PR
 
 CI does not grade the mission: the deterministic checks need the Docker lab, so `make test` run locally is the grader. The PR comment headline says whether the review was posted, skipped (no API key) or failed (API error), and never marks the mission complete.
 

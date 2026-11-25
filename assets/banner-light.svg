@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="t d">
+  <title id="t">Starfall Defence Corps Academy</title>
+  <desc id="d">Starfall Defence Corps Academy: Gamified, hands-on Ansible training for cyber defence teams. Live Docker labs, Deterministic pytest grader, AI code review (ARIA), Incident response.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#fef3c7"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#0f172a" stroke-opacity="0.05"/></pattern>
+  </defs>
+  <rect width="1200" height="300" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="300" rx="18" fill="url(#grid)"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+    <g transform="translate(140 150)"><circle cx="0" cy="-36" r="60" fill="#ffffff" fill-opacity="0.95" stroke="#b45309" stroke-width="7"/><polygon points="0.0,-70.0 8.2,-47.3 32.3,-46.5 13.3,-31.7 20.0,-8.5 0.0,-22.0 -20.0,-8.5 -13.3,-31.7 -32.3,-46.5 -8.2,-47.3" fill="#b45309" stroke="#b45309" stroke-width="4" stroke-linejoin="round"/><path d="M-58 44 L0 74 L58 44" fill="none" stroke="#b45309" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1"/><path d="M-58 74 L0 104 L58 74" fill="none" stroke="#b45309" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.6"/></g>
+    <text x="270" y="112" fill="#0f172a" font-size="48" font-weight="700" letter-spacing="-1">Starfall Defence Corps Academy</text>
+    <text x="272" y="154" fill="#1e293b" font-size="25">Gamified, hands-on Ansible training for cyber defence teams</text>
+    <text x="272" y="187" fill="#475569" font-size="17">15 missions · 2 timed capstones · every mission ships a live Docker lab and an automated grader</text>
+    <rect x="270" y="214" width="153" height="34" rx="17" fill="#b45309" fill-opacity="0.12" stroke="#b45309" stroke-opacity="0.5"/><text x="346.5" y="236" fill="#0f172a" font-size="15" text-anchor="middle">Live Docker labs</text><rect x="433" y="214" width="238" height="34" rx="17" fill="#b45309" fill-opacity="0.12" stroke="#b45309" stroke-opacity="0.5"/><text x="552" y="236" fill="#0f172a" font-size="15" text-anchor="middle">Deterministic pytest grader</text><rect x="681" y="214" width="192" height="34" rx="17" fill="#b45309" fill-opacity="0.12" stroke="#b45309" stroke-opacity="0.5"/><text x="777" y="236" fill="#0f172a" font-size="15" text-anchor="middle">AI code review (ARIA)</text><rect x="883" y="214" width="161" height="34" rx="17" fill="#b45309" fill-opacity="0.12" stroke="#b45309" stroke-opacity="0.5"/><text x="963.5" y="236" fill="#0f172a" font-size="15" text-anchor="middle">Incident response</text>
+  </g>
+</svg>

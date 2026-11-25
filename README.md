@@ -1,4 +1,7 @@
-# Starfall Defence Corps Academy
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img src="assets/banner-light.svg" alt="Starfall Defence Corps Academy: gamified, hands-on Ansible training for cyber defence teams. 15 missions and 2 timed capstones, each with a live Docker lab and an automated grader." width="100%">
+</picture>
 
 > 🏠 **You are here: Academy Hub** · [📖 Course Outline](COURSE_OUTLINE.md) · [📚 Field Manuals](field-manuals/) · [🤖 ARIA](https://github.com/starfall-defence-corps/aria)
 
@@ -86,50 +89,10 @@ Module 3 makes your Module 2 manoeuvres **reusable across unfamiliar terrain**. 
 
 Every mission repo runs the same loop: you work and grade locally against a Docker lab, then a pull request in your own copy triggers ARIA's written review. The grader is local and deterministic; the review is qualitative and sits on top.
 
-```mermaid
-flowchart TD
-    TPL["Mission template repo<br/>starfall-defence-corps/mission-*"]
-    COPY["Your own copy of the repo<br/>on GitHub"]
-    API["Anthropic API"]
-
-    subgraph LOCAL["Your machine or Codespace"]
-        DOC["make doctor<br/>checks Docker, ports, tools"]
-        SETUP["make setup<br/>builds the Python venv, SSH key<br/>and Docker lab containers"]
-        WORK["Read docs/BRIEFING.md<br/>write Ansible in workspace/"]
-        TEST["make test<br/>pytest grader in molecule/default/tests/<br/>checks your files and the live lab"]
-        LAB[("Docker lab<br/>target containers")]
-        SUBMIT["make submit<br/>branch, commit workspace/,<br/>push, open PR to main"]
-    end
-
-    subgraph GH["GitHub: your copy of the repo"]
-        PR["Pull request to main<br/>opened or updated"]
-        WF["ARIA Review workflow<br/>.github/workflows/aria-review.yml"]
-        ACT["ARIA action, aria@v1.0.0<br/>skip-tests: graders are not re-run"]
-        KEY{"ANTHROPIC_API_KEY<br/>secret set?"}
-        SKIP["Review skipped<br/>check passes"]
-        READ["Reads your submitted workspace files<br/>plus ARIA's prompt and mission context"]
-        POSTED["Review produced"]
-        FAILED["Review failed<br/>check fails"]
-        COMMENT["ARIA comment on the PR<br/>created once, updated on every push"]
-    end
-
-    TPL -- "Use this template" --> COPY
-    COPY -- "clone, or open a Codespace" --> DOC
-    DOC --> SETUP --> WORK --> TEST
-    TEST -. "Ansible over SSH" .-> LAB
-    TEST -- "deficiencies" --> WORK
-    TEST -- "all phases green" --> SUBMIT
-    SUBMIT --> PR --> WF --> ACT --> KEY
-    KEY -- "no" --> SKIP
-    KEY -- "yes" --> READ
-    READ --> API
-    API -- "review text" --> POSTED
-    API -- "API error" --> FAILED
-    POSTED --> COMMENT
-    SKIP --> COMMENT
-    FAILED --> COMMENT
-    COMMENT -. "address feedback, push again" .-> WORK
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/how-a-mission-works-dark.svg">
+  <img src="assets/how-a-mission-works-light.svg" alt="How a mission works. On your machine or in a Codespace: make doctor, make setup, write Ansible, then make test grades your files and the live Docker lab; fix and re-test until all phases are green, then make submit opens a pull request in your own copy. On GitHub the ARIA Review workflow runs aria@v1.0.0 without re-running graders. If the ANTHROPIC_API_KEY secret is set, ARIA sends your files and the mission context to the Anthropic API and posts one PR comment, updated on each push; with no key the review is skipped and the check passes; on an API error the check fails. You address the feedback and push again." width="100%">
+</picture>
 
 In short: you create your own copy of a mission repo from its template, boot its Docker lab with `make setup`, and iterate on `workspace/` until `make test` — the mission's pytest grader — shows every phase green. `make submit` then pushes a branch and opens a pull request to `main` in your copy. Every time that pull request is opened or updated, the mission's `aria-review.yml` workflow runs the shared ARIA action with `skip-tests`, so the graders are **not** re-run in CI. If your repo has an `ANTHROPIC_API_KEY` secret, ARIA sends your submitted files to the Anthropic API with its reviewer prompt and the mission's context, and the workflow posts the result as a single PR comment that it updates on each push. Without a key the comment says the review was skipped; if the API call fails the comment says so and the check fails.
 
